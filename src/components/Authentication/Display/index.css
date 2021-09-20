@@ -258,20 +258,168 @@
 
 .person-face {
   position: absolute;
-  top: 43%;
-  left: 85%;
+  top: 40%;
+  left: 79%;
   z-index: 1;
 }
 
 .hair-first-section {
   position: absolute;
-  top: 46%;
-  left: 84.3%;
+  top: 43%;
+  left: 78.3%;
   z-index: 2;
 }
 
 .hair-top-section {
   position: absolute;
-  top: 46%;
-  left: 80.3%;
+  top: 42.7%;
+  left: 74.3%;
+}
+
+.ear-section {
+  position: absolute;
+  top: 46.5%;
+  left: 78.5%;
+  z-index: 4;
+  border-radius: 50%;
+  height: 10px;
+  width: 10px;
+  background-color: #936760;
+}
+
+.lower-hair-section {
+  position: absolute;
+  top: 47%;
+  left: 76.8%;
+}
+
+.left-eye-lashes {
+  position: absolute;
+  top: 45.3%;
+  left: 80.5%;
+  z-index: 6;
+}
+
+.right-eye-lashes {
+  position: absolute;
+  top: 45.3%;
+  left: 82.5%;
+  z-index: 6;
+}
+
+.left-eye-brows {
+  position: absolute;
+  top: 45.8%;
+  left: 80.5%;
+  z-index: 6;
+}
+
+.right-eye-brows {
+  position: absolute;
+  top: 45.8%;
+  left: 82.5%;
+  z-index: 6;
+}
+
+.left-eye {
+  position: absolute;
+  top: 46.3%;
+  left: 80.9%;
+  z-index: 6;
+}
+
+.right-eye {
+  position: absolute;
+  top: 46.3%;
+  left: 82.9%;
+  z-index: 6;
+}
+
+.nose-section {
+  position: absolute;
+  top: 46.3%;
+  left: 82.2%;
+  z-index: 6;
+}
+
+.mouth-section {
+  position: absolute;
+  top: 48.3%;
+  left: 81.2%;
+  z-index: 6;
+}
+
+.left-ear-ring {
+  position: absolute;
+  top: 47.3%;
+  left: 78.2%;
+}
+
+.right-ear-ring {
+  position: absolute;
+  top: 47.3%;
+  left: 83.7%;
+}
+
+.top-shirt-section {
+  position: absolute;
+  top: 51%;
+  left: 75%;
+}
+
+.left-sleeve {
+  position: absolute;
+  top: 50.8%;
+  left: 72.8%;
+}
+
+.left-arm-section {
+  position: absolute;
+  top: 54.8%;
+  left: 70.2%;
+}
+
+.top-arm-section {
+  position: absolute;
+  top: 54%;
+  left: 70%;
+}
+
+.pointing-arm-section {
+  position: absolute;
+  top: 52%;
+  left: 69.3%;
+}
+
+.phone-holding-section {
+  position: absolute;
+  top: 51%;
+  left: 80.5%;
+  background-color: #9295ae;
+  z-index: 6;
+}
+
+.right-arm-section {
+  position: absolute;
+  top: 51%;
+  left: 81.5%;
+}
+
+.lower-right-arm-section {
+  position: absolute;
+  top: 55.8%;
+  left: 83.8%;
+}
+
+.phone-holding-arm {
+  position: absolute;
+  top: 51.8%;
+  left: 81.2%;
+  z-index: 7;
+}
+
+.person-dress {
+  position: absolute;
+  top: 62.8%;
+  left: 69.4%;
 }
