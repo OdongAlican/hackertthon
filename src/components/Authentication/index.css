@@ -1,0 +1,8 @@
+.main-login-section {
+  display: flex;
+}
+
+.welcome-section,
+.display-logo-section {
+  flex: 1;
+}

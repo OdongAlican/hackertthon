@@ -1,0 +1,277 @@
+.main-display-section {
+  width: 100%;
+  height: 100vh;
+  background: #172ad2;
+  position: relative;
+}
+
+.transparent-payment {
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  width: 251px;
+  background: #ffc727;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  border-radius: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+}
+
+.third-party-section {
+  position: absolute;
+  width: 70%;
+  height: 72px;
+  left: 10%;
+  top: 16%;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  color: #fff;
+}
+
+.phone-outer-casing {
+  position: absolute;
+  left: 38%;
+  top: 33.12%;
+  height: 60%;
+  width: 34%;
+}
+
+.phone-outer-screen {
+  position: absolute;
+  left: 42%;
+  top: 35%;
+  background: #fff;
+  width: 26.1%;
+  border-radius: 24px;
+  height: 56.5%;
+}
+
+.phone-screen-darker-top-section {
+  background-color: #061540;
+  width: 8%;
+  height: 15px;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+  position: absolute;
+  left: 51%;
+  top: 35%;
+}
+
+.arrow-left-section {
+  position: absolute;
+  top: 38.5%;
+  left: 44%;
+}
+
+.arrow-middle-section {
+  position: absolute;
+  top: 39.5%;
+  left: 48.2%;
+}
+
+.arrow-dots-section,
+.arrow-dots-section-two,
+.arrow-dots-section-three {
+  position: absolute;
+  top: 39.3%;
+  left: 64%;
+}
+
+.arrow-dots-section-two {
+  left: 64.5%;
+}
+
+.arrow-dots-section-three {
+  left: 65.1%;
+}
+
+.horizontal-below-arrow {
+  position: absolute;
+  width: 26.1%;
+  top: 42%;
+  left: 42%;
+}
+
+.circle-head-section {
+  position: absolute;
+  top: 44%;
+  left: 52%;
+}
+
+.circle-head-section-inner {
+  position: absolute;
+  top: 45.2%;
+  left: 52.3%;
+}
+
+.below-circle-head-section {
+  position: absolute;
+  background-color: #ffc727;
+  top: 51%;
+  left: 49%;
+  border-radius: 50%;
+}
+
+.below-circle-head-section-tick {
+  position: absolute;
+  top: 51.7%;
+  left: 49.5%;
+}
+
+.verified-section {
+  position: absolute;
+  top: 51.2%;
+  left: 52%;
+  font-size: 14px;
+  font-weight: bold;
+  color: #ffc727;
+  padding: 0 2px;
+}
+
+.verified-section-first {
+  position: absolute;
+  top: 57%;
+  left: 48%;
+}
+
+.verified-section-second {
+  position: absolute;
+  top: 57%;
+  left: 53%;
+}
+
+.verified-section-third {
+  position: absolute;
+  top: 57%;
+  left: 58%;
+}
+
+.verified-section-forth {
+  position: absolute;
+  top: 59%;
+  left: 46%;
+}
+
+.verified-section-fifth {
+  position: absolute;
+  top: 59%;
+  left: 53%;
+}
+
+.verified-section-sixth {
+  position: absolute;
+  top: 59%;
+  left: 60%;
+}
+
+.verified-section-seventh {
+  position: absolute;
+  top: 62%;
+  left: 46%;
+}
+
+.verified-section-seventh-inner {
+  position: absolute;
+  top: 64%;
+  left: 47.8%;
+}
+
+.verified-section-eigth {
+  position: absolute;
+  top: 62%;
+  left: 60%;
+}
+
+.verified-section-eigth-inner {
+  position: absolute;
+  top: 64%;
+  left: 61.8%;
+}
+
+.lower-verified-horizontal {
+  position: absolute;
+  top: 75%;
+  width: 26.1%;
+  left: 42%;
+}
+
+.lower-verified-vertical {
+  position: absolute;
+  top: 75%;
+  left: 55%;
+}
+
+.phone-bottom-left-section {
+  position: absolute;
+  top: 77.5%;
+  left: 41.9%;
+}
+
+.phone-bottom-right-section {
+  position: absolute;
+  top: 79%;
+  left: 54.9%;
+}
+
+.phone-bottom-left-section-inner {
+  position: absolute;
+  top: 81%;
+  left: 47%;
+}
+
+.phone-bottom-right-section-inner {
+  position: absolute;
+  top: 81.5%;
+  left: 60.5%;
+}
+
+.phone-bottom-left-section-inner-wave {
+  position: absolute;
+  top: 84%;
+  left: 43%;
+}
+
+.phone-bottom-right-section-inner-wave {
+  position: absolute;
+  top: 84%;
+  left: 57%;
+}
+
+.extreme-left-chat {
+  position: absolute;
+  top: 35%;
+  left: 89%;
+}
+
+.extreme-left-chat-tick {
+  position: absolute;
+  top: 37.5%;
+  left: 91%;
+}
+
+.person-face {
+  position: absolute;
+  top: 43%;
+  left: 85%;
+  z-index: 1;
+}
+
+.hair-first-section {
+  position: absolute;
+  top: 46%;
+  left: 84.3%;
+  z-index: 2;
+}
+
+.hair-top-section {
+  position: absolute;
+  top: 46%;
+  left: 80.3%;
+}
