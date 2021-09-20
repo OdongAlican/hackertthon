@@ -1,0 +1,41 @@
+.small-input-section,
+.medium-input-section,
+.large-input-section {
+  height: 48px;
+  border-radius: 3px;
+  border: 1px solid #e4e4e4;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  outline: none;
+  padding: 0 10px;
+}
+
+.small-button-section,
+.medium-button-section,
+.large-button-section {
+  padding: 5px 20px;
+  border: none;
+  border-radius: 3px;
+  background-color: #2a57d3;
+  color: #fff;
+  font-size: 12px;
+  cursor: pointer;
+  font-weight: 600;
+  outline: none;
+}
+
+.small-input-section,
+.small-button-section {
+  width: 300px;
+}
+
+.medium-input-section,
+.medium-button-section {
+  width: 350px;
+}
+
+.large-input-section,
+.large-button-section {
+  width: 475px;
+}
