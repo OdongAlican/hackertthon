@@ -58,3 +58,5 @@ export const AuthCard = ({
     {children}
   </div>
 );
+
+export const ErrorSection = ({ message }) => <div className="error-section">{ message }</div>;
