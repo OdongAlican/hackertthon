@@ -423,3 +423,164 @@
   top: 62.8%;
   left: 69.4%;
 }
+
+.yellow-person-head {
+  position: absolute;
+  top: 36%;
+  left: 17%;
+}
+
+.yellow-person-head-pointer {
+  position: absolute;
+  top: 39.5%;
+  left: 18.5%;
+}
+
+.circular-left-position {
+  position: absolute;
+  top: 42%;
+  left: 10.5%;
+}
+
+.circular-left-position-inner {
+  position: absolute;
+  top: 42.9%;
+  left: 11.2%;
+}
+
+.left-outer-pointer {
+  position: absolute;
+  top: 42.9%;
+  left: 22.3%;
+}
+
+.left-outer-pointer-book {
+  position: absolute;
+  top: 41.3%;
+  left: 27.3%;
+  color: #fff;
+  font-size: 20px;
+}
+
+.first-circle-dot,
+.top-circle-dot {
+  background-color: #fff;
+  width: 3px;
+  height: 3px;
+  position: absolute;
+  top: 42.7%;
+  left: 26.3%;
+  border-radius: 50%;
+}
+
+.top-circle-dot {
+  top: 39.9%;
+  left: 18.3%;
+}
+
+.left-outer-pointer-second {
+  position: absolute;
+  top: 50.3%;
+  left: 25.3%;
+  color: #fff;
+  font-size: 20px;
+}
+
+.firt-circular-division {
+  background-color: #ffc735;
+  height: 25px;
+  width: 18px;
+  position: absolute;
+  top: 48.7%;
+  left: 29.9%;
+  color: #fff;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.first-circular-div-dot {
+  width: 3px;
+  height: 3px;
+  background-color: #fff;
+  border-radius: 50%;
+}
+
+.box-shaped-dot-section {
+  position: absolute;
+  top: 50.3%;
+  left: 28.9%;
+  width: 3px;
+  height: 3px;
+  background-color: #fff;
+  border-radius: 50%;
+}
+
+.lower-circular-section {
+  position: absolute;
+  top: 57.3%;
+  left: 18.3%;
+}
+
+.left-outer-pointer-third {
+  position: absolute;
+  top: 55.3%;
+  left: 23.3%;
+  color: #fff;
+  font-size: 20px;
+}
+
+.lock-cover-section {
+  position: absolute;
+  top: 56.5%;
+  left: 28.3%;
+  font-size: 20px;
+  color: #fff;
+}
+
+.lower-lowest-dot,
+.lower-lowest-dot-second {
+  position: absolute;
+  top: 57.7%;
+  left: 27%;
+  height: 3px;
+  width: 3px;
+  background-color: #fff;
+  border-radius: 50%;
+}
+
+.lower-lowest-dot-second {
+  top: 61%;
+  left: 18.7%;
+}
+
+.circular-bottom-dots-first {
+  position: absolute;
+  top: 62.7%;
+  left: 17.5%;
+}
+
+.circular-bottom-dots-second {
+  position: absolute;
+  top: 61%;
+  left: 20%;
+}
+
+.circular-bottom-dots-third {
+  position: absolute;
+  top: 64.4%;
+  left: 20%;
+}
+
+.circular-bottom-dots-connector-one {
+  position: absolute;
+  top: 61.4%;
+  left: 18.2%;
+}
+
+.circular-bottom-dots-connector-two {
+    position: absolute;
+    top: 63.2%;
+    left: 18.2%;
+}
