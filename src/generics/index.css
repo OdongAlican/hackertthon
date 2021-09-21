@@ -1,10 +1,11 @@
 .small-input-section,
 .medium-input-section,
 .large-input-section {
-  height: 48px;
+  font-family: 'Source Sans Pro', sans-serif;
+  height: 35px;
   border-radius: 3px;
   border: 1px solid #e4e4e4;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 600;
   cursor: pointer;
   outline: none;
@@ -14,12 +15,13 @@
 .small-button-section,
 .medium-button-section,
 .large-button-section {
-  padding: 5px 20px;
+  font-family: 'Source Sans Pro', sans-serif;
+  padding: 8px 20px;
   border: none;
   border-radius: 3px;
   background-color: #2a57d3;
   color: #fff;
-  font-size: 12px;
+  font-size: 14px;
   cursor: pointer;
   font-weight: 600;
   outline: none;
@@ -37,5 +39,38 @@
 
 .large-input-section,
 .large-button-section {
-  width: 475px;
+  width: 85%;
+}
+
+.main-page-logo {
+  position: absolute;
+  left: 5.56%;
+  right: 91.67%;
+  top: 3.91%;
+  bottom: 92.05%;
+}
+
+.inner-form-section {
+  width: 80%;
+  height: 85%;
+  padding: 60px 10px;
+}
+
+.page-main-hearder {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 40px;
+}
+
+.page-mini-header {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.extra-heading-span {
+  color: #2a57d3;
 }
