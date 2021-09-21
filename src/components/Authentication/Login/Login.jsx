@@ -9,7 +9,7 @@ import Display from '../Display/Display';
 import {
   AuthCard, Input, Button, ErrorSection,
 } from '../../../generics/Generics';
-import { loginValidator } from '../../../constants/validators';
+import { authValidator } from '../../../constants/validators';
 import { signIn } from '../../../actions';
 import { loginConstants } from '../../../constants/index';
 
@@ -40,7 +40,7 @@ const Login = () => {
     });
   };
 
-  const submitLogin = () => setErrors(loginValidator(values));
+  const submitLogin = () => setErrors(authValidator(values, 'signin'));
 
   useEffect(() => {
     const errorArray = Object.keys(errors);
@@ -80,7 +80,7 @@ const Login = () => {
             }
             { errors.loginpasswordinput && <ErrorSection message={errors.loginpasswordinput} />}
           </div>
-          <Link to="/" className="login-forgot-password-section">
+          <Link to="/forgetpassword" className="login-forgot-password-section">
             Forgotten your password
           </Link>
           <div className="login-button-section mt-3">
@@ -92,7 +92,7 @@ const Login = () => {
           <div className="dont-have-account">
             Don&#39;t have an account ?
             {' '}
-            <Link style={{ color: '#2A57D3' }} to="/">Sign Up Here</Link>
+            <Link style={{ color: '#2A57D3' }} to="/signup">Sign Up Here</Link>
           </div>
         </AuthCard>
       </div>
