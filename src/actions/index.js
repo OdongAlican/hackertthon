@@ -25,4 +25,9 @@ export const signUp = data => async dispatch => {
   }
 };
 
+export const forgotPassword = data => async dispatch => {
+  dispatch({ type: PENDING_REQUEST, payload: 'Loading Content' });
+  console.log(data, 'data');
+};
+
 export const signOut = () => localStorage.removeItem('user');
