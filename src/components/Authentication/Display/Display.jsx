@@ -1,5 +1,6 @@
 import React from 'react';
 import './index.css';
+import FingerPrint from '../../../images/print.png';
 
 const Display = () => (
   <div className="main-display-section">
@@ -245,7 +246,7 @@ const Display = () => (
     <svg className="doner-bucket-section" width="59" height="50" viewBox="0 0 59 50" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M0.487793 0.956421L8.21874 49.954H51.3658L58.5628 0.956421H0.487793Z" fill="#FFC727" />
     </svg>
-
+    <img className="finger-print" src={FingerPrint} alt="Print" />
   </div>
 );
 
