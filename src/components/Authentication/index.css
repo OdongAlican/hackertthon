@@ -21,7 +21,8 @@
   font-size: 16px;
 }
 
-.login-password-input {
+.login-password-input,
+.login-email-input {
   position: relative;
 }
 
@@ -46,6 +47,7 @@ i {
   color: #666;
   font-size: 14px;
   margin-top: 15px;
+  font-weight: bold;
 }
 
 .dont-have-account a {
