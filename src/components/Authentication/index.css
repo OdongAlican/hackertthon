@@ -36,8 +36,18 @@ i {
 .login-forgot-password-section {
   font-family: 'Source Sans Pro', sans-serif;
   color: #2A57D3;
-  margin-top: 10px;
   font-size: 14px;
   font-weight: bold;
   cursor: pointer;
+  text-decoration: none;
+}
+
+.dont-have-account {
+  color: #666;
+  font-size: 14px;
+  margin-top: 15px;
+}
+
+.dont-have-account a {
+  text-decoration: none;
 }
