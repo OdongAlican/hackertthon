@@ -580,7 +580,37 @@
 }
 
 .circular-bottom-dots-connector-two {
-    position: absolute;
-    top: 63.2%;
-    left: 18.2%;
+  position: absolute;
+  top: 63.2%;
+  left: 18.2%;
+}
+
+.second-leaf {
+  position: absolute;
+  top: 67%;
+  left: 27%;
+}
+
+.first-leaf {
+  position: absolute;
+  top: 73%;
+  left: 21.5%;
+}
+
+.third-leaf {
+  position: absolute;
+  top: 69%;
+  left: 28.8%;
+}
+
+.forth-leaf {
+  position: absolute;
+  top: 69%;
+  left: 30%;
+}
+
+.doner-bucket-section {
+  position: absolute;
+  top: 85%;
+  left: 25.5%;
 }
