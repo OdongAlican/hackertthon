@@ -6,7 +6,9 @@ import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import '../index.css';
 import Display from '../Display/Display';
-import { AuthCard, Input, Button } from '../../../generics/Generics';
+import {
+  AuthCard, Input, Button, ErrorSection,
+} from '../../../generics/Generics';
 import { loginValidator } from '../../../constants/validators';
 import { signIn } from '../../../actions';
 import { loginConstants } from '../../../constants/index';
@@ -62,6 +64,7 @@ const Login = () => {
               inputType="text"
               changeValue={handleChange}
             />
+            { errors.loginemailinput && <ErrorSection message={errors.loginemailinput} />}
           </div>
           <div className="login-password-section mt-3">Password</div>
           <div className="login-password-input mb-3">
@@ -75,6 +78,7 @@ const Login = () => {
                 ? (<i className="fas fa-eye-slash" onClick={togglePassword} />)
                 : (<i className="fas fa-eye" onClick={togglePassword} />)
             }
+            { errors.loginpasswordinput && <ErrorSection message={errors.loginpasswordinput} />}
           </div>
           <Link to="/" className="login-forgot-password-section">
             Forgotten your password
