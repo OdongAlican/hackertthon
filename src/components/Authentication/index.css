@@ -1,4 +1,5 @@
-.main-login-section {
+.main-login-section,
+.main-signup-section {
   display: flex;
 }
 
@@ -52,4 +53,50 @@ i {
 
 .dont-have-account a {
   text-decoration: none;
+}
+
+.first-name-second-name-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 10px;
+  width: 85%;
+}
+
+.sign-up-first-name,
+.sign-up-second-name {
+  font-weight: bold;
+}
+
+.sign-up-second-name-input,
+.sign-up-first-name-input {
+  position: relative;
+}
+
+.go-back-links {
+  width: 85%;
+  background-color: #F0F2FE;
+  display: block;
+  text-align: center;
+  padding: 8px;
+  text-decoration: none;
+  border-radius: 3px;
+  color: #666;
+  font-size: 14px;
+}
+
+.horizontal-or-section {
+  width: 85%;
+  border-top: 1px solid #F0F2FE;
+  position: relative;
+}
+
+.horizontal-or-section span {
+  position: absolute;
+  font-size: 12px;
+  top: -10px;
+  left: 50%;
+  background-color: #fff;
+  padding: 0 5px;
+  font-weight: bold;
+  color: gray;
 }
