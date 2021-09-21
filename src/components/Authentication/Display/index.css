@@ -31,7 +31,7 @@
   font-family: 'Source Sans Pro', sans-serif;
   font-style: normal;
   font-weight: 600;
-  font-size: 15px;
+  font-size: 18px;
   color: #fff;
   margin-top: 10px;
 }
@@ -248,13 +248,13 @@
 .extreme-left-chat {
   position: absolute;
   top: 35%;
-  left: 89%;
+  left: 83%;
 }
 
 .extreme-left-chat-tick {
   position: absolute;
   top: 37.5%;
-  left: 91%;
+  left: 85%;
 }
 
 .person-face {
