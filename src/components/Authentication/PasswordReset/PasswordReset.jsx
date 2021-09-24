@@ -20,7 +20,7 @@ const PasswordReset = () => {
   const submitNewInformation = () => console.log('component');
   console.log(setErrors);
   return (
-    <div className="main-login-section">
+    <div data-testid="forgetReset" className="main-login-section">
       <div className="welcome-section">
         <AuthCard
           pageMainHeader={resetPasswordConstants.pageMainHeader}

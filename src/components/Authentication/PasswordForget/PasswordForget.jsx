@@ -29,7 +29,7 @@ const PasswordForget = () => {
     dispatch(forgotPassword(values));
   }, [errors]);
   return (
-    <div className="main-login-section">
+    <div data-testid="forgetPassword" className="main-login-section">
       <div className="welcome-section">
         <AuthCard
           pageMainHeader={forgetPasswordConstants.pageMainHeader}

@@ -50,7 +50,7 @@ const Login = () => {
   }, [errors]);
 
   return (
-    <div className="main-login-section">
+    <div data-testid="appLogin" className="main-login-section">
       <div className="welcome-section">
         <AuthCard
           pageMainHeader={loginConstants.pageMainHeader}
