@@ -6,6 +6,6 @@ export const methods = {
   get: 'get', post: 'post', delete: 'delete', put: 'put',
 };
 
-export const baseUrl = 'https://enigmatic-cliffs-07216.herokuapp.com';
-export const signUpRoute = '/sign/up';
-export const signInRoute = '/';
+export const baseUrl = 'http://localhost:8000';
+export const signUpRoute = 'api/users/register';
+export const signInRoute = 'api/users/login';
