@@ -1,27 +1,28 @@
 import { PostRequest } from '../utils/index';
 import {
-  AUTHENTICATED, AUTHENTICATION_ERROR, PENDING_REQUEST, signInRoute, methods, signUpRoute,
+  AUTHENTICATED, UNAUTHENTICATED,
+  AUTHENTICATION_ERROR, PENDING_REQUEST,
+  signInRoute, methods, signUpRoute,
 } from './constants';
 
 export const signIn = data => async dispatch => {
   dispatch({ type: PENDING_REQUEST, payload: 'Loading Content' });
   try {
-    const response = await PostRequest(methods.post, data, signInRoute);
+    const response = await PostRequest(methods.post, signInRoute, data);
     dispatch({ type: AUTHENTICATED });
-    localStorage.setItem('user', response.data.token);
+    localStorage.setItem('user', response?.data?.token);
   } catch (error) {
-    dispatch({ type: AUTHENTICATION_ERROR, payload: error.message });
+    dispatch({ type: AUTHENTICATION_ERROR, payload: error?.message });
   }
 };
 
 export const signUp = data => async dispatch => {
   dispatch({ type: PENDING_REQUEST, payload: 'Loading Content' });
   try {
-    const response = await PostRequest(methods.post, data, signUpRoute);
-    dispatch({ type: AUTHENTICATED });
-    localStorage.setItem('user', response.data.token);
+    const response = await PostRequest(methods.post, signUpRoute, data);
+    dispatch({ type: UNAUTHENTICATED, payload: response?.data });
   } catch (error) {
-    dispatch({ type: AUTHENTICATION_ERROR, payload: error.message });
+    dispatch({ type: AUTHENTICATION_ERROR, payload: error?.message });
   }
 };
 
