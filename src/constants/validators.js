@@ -5,32 +5,35 @@ export const authValidator = (values, state) => {
   if (state === 'signin') {
     errorValues.state = 'login state';
 
-    if (!values.loginemailinput) {
-      errorValues.loginemailinput = 'Email required';
+    if (!values.userEmail) {
+      errorValues.userEmail = 'Email required';
     }
-    if (!emailRegex.test(values.loginemailinput) && values.loginemailinput) {
-      errorValues.loginemailinput = 'Invalid email';
+    if (!emailRegex.test(values.userEmail) && values.userEmail) {
+      errorValues.userEmail = 'Invalid email';
     }
-    if (!values.loginpasswordinput) {
-      errorValues.loginpasswordinput = 'Passord Required';
+    if (!values.password) {
+      errorValues.password = 'Passord Required';
     }
   }
   if (state === 'signup') {
     errorValues.state = 'signup state';
-    if (!values.firstname) {
-      errorValues.firstname = 'First name rquired';
+    if (!values.first_name) {
+      errorValues.first_name = 'First name rquired';
     }
-    if (!values.lastname) {
-      errorValues.lastname = 'Last name rquired';
+    if (!values.last_name) {
+      errorValues.last_name = 'Last name rquired';
     }
-    if (!values.signupemail) {
-      errorValues.signupemail = 'Email required';
+    if (!values.userEmail) {
+      errorValues.userEmail = 'Email required';
     }
-    if (!emailRegex.test(values.signupemail) && values.signupemail) {
-      errorValues.signupemail = 'Invalid email';
+    if (!emailRegex.test(values.userEmail) && values.userEmail) {
+      errorValues.userEmail = 'Invalid email';
     }
-    if (!values.signuppassword) {
-      errorValues.signuppassword = 'Passord Required';
+    if (!values.password) {
+      errorValues.password = 'Passord Required';
+    }
+    if (values.confirm_password !== values.password && values.confirm_password) {
+      errorValues.confirm_password = 'Passwords Do not match';
     }
   }
 
