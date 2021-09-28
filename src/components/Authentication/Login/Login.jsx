@@ -14,8 +14,8 @@ import { signIn } from '../../../actions';
 import { loginConstants } from '../../../constants/index';
 
 const initialState = {
-  loginemailinput: '',
-  loginpasswordinput: '',
+  userEmail: '',
+  password: '',
 };
 
 const Login = () => {
@@ -60,16 +60,16 @@ const Login = () => {
           <div className="login-email-section mt-3">Email Adress</div>
           <div className="login-email-input">
             <Input
-              inputName="loginemailinput"
+              inputName="userEmail"
               inputType="text"
               changeValue={handleChange}
             />
-            { errors.loginemailinput && <ErrorSection message={errors.loginemailinput} />}
+            { errors.userEmail && <ErrorSection message={errors.userEmail} />}
           </div>
           <div className="login-password-section mt-3">Password</div>
           <div className="login-password-input mb-3">
             <Input
-              inputName="loginpasswordinput"
+              inputName="password"
               changeValue={handleChange}
               inputType={passwordState}
             />
@@ -78,7 +78,7 @@ const Login = () => {
                 ? (<i className="fas fa-eye-slash" onClick={togglePassword} />)
                 : (<i className="fas fa-eye" onClick={togglePassword} />)
             }
-            { errors.loginpasswordinput && <ErrorSection message={errors.loginpasswordinput} />}
+            { errors.password && <ErrorSection message={errors.password} />}
           </div>
           <Link to="/forgetpassword" className="login-forgot-password-section">
             Forgotten your password
