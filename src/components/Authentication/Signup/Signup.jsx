@@ -1,32 +1,46 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import Display from '../Display/Display';
 import {
   AuthCard, Input, Button, ErrorSection,
 } from '../../../generics/Generics';
 import { signupConstants } from '../../../constants/index';
 import { authValidator } from '../../../constants/validators';
+import { signUp } from '../../../actions';
 
 const initialState = {
-  firstname: '',
-  lastname: '',
-  signupemail: '',
-  signuppassword: '',
+  first_name: '',
+  last_name: '',
+  userEmail: '',
+  password: '',
+  confirm_password: '',
 };
 
 const Signup = () => {
   const [values, setValues] = useState(initialState);
   const [errors, setErrors] = useState({});
   const [passwordState, setPasswordState] = useState('password');
+  const [confirmPasswordState, setConfirmPasswordState] = useState('password');
+  const dispatch = useDispatch();
 
-  const togglePassword = () => {
-    if (passwordState === 'password') {
-      setPasswordState('text');
-    } else {
-      setPasswordState('password');
+  const togglePassword = value => {
+    if (value === 'password') {
+      if (passwordState === 'password') {
+        setPasswordState('text');
+      } else {
+        setPasswordState('password');
+      }
+    }
+    if (value === 'confirm_password') {
+      if (confirmPasswordState === 'password') {
+        setConfirmPasswordState('text');
+      } else {
+        setConfirmPasswordState('password');
+      }
     }
   };
 
@@ -39,6 +53,13 @@ const Signup = () => {
   };
 
   const submitSignUp = () => setErrors(authValidator(values, 'signup'));
+
+  useEffect(() => {
+    const errorArray = Object.keys(errors);
+    if (errorArray.length === 1 && errorArray.includes('state')) {
+      dispatch(signUp(values));
+    }
+  }, [errors]);
 
   return (
     <div className="main-signup-section">
@@ -54,11 +75,11 @@ const Signup = () => {
               <div className="sign-up-first-name-input">
                 <Input
                   inputSize="small"
-                  inputName="firstname"
+                  inputName="first_name"
                   inputType="text"
                   changeValue={handleChange}
                 />
-                { errors.firstname && <ErrorSection message={errors.firstname} />}
+                { errors.first_name && <ErrorSection message={errors.first_name} />}
               </div>
             </div>
             <div className="sign-up-second-name">
@@ -66,36 +87,50 @@ const Signup = () => {
               <div className="sign-up-second-name-input">
                 <Input
                   inputSize="small"
-                  inputName="lastname"
+                  inputName="last_name"
                   inputType="text"
                   changeValue={handleChange}
                 />
-                { errors.lastname && <ErrorSection message={errors.lastname} />}
+                { errors.last_name && <ErrorSection message={errors.last_name} />}
               </div>
             </div>
           </div>
           <div className="login-email-section mt-3">Email Adress</div>
           <div className="login-email-input">
             <Input
-              inputName="signupemail"
+              inputName="userEmail"
               inputType="text"
               changeValue={handleChange}
             />
-            { errors.signupemail && <ErrorSection message={errors.signupemail} />}
+            { errors.userEmail && <ErrorSection message={errors.userEmail} />}
           </div>
           <div className="login-password-section mt-3">Password</div>
           <div className="login-password-input mb-3">
             <Input
-              inputName="signuppassword"
+              inputName="password"
               changeValue={handleChange}
               inputType={passwordState}
             />
             {
               passwordState === 'password'
-                ? (<i className="fas fa-eye-slash" onClick={togglePassword} />)
-                : (<i className="fas fa-eye" onClick={togglePassword} />)
+                ? (<i className="fas fa-eye-slash" onClick={() => togglePassword('password')} />)
+                : (<i className="fas fa-eye" onClick={() => togglePassword('password')} />)
             }
-            { errors.signuppassword && <ErrorSection message={errors.signuppassword} />}
+            { errors.password && <ErrorSection message={errors.password} />}
+          </div>
+          <div className="login-password-section mt-3">Confirm Password</div>
+          <div className="login-password-input mb-3">
+            <Input
+              inputName="confirm_password"
+              changeValue={handleChange}
+              inputType={confirmPasswordState}
+            />
+            {
+              confirmPasswordState === 'password'
+                ? (<i className="fas fa-eye-slash" onClick={() => togglePassword('confirm_password')} />)
+                : (<i className="fas fa-eye" onClick={() => togglePassword('confirm_password')} />)
+            }
+            { errors.confirm_password && <ErrorSection message={errors.confirm_password} />}
           </div>
           <div className="login-button-section mt-4">
             <Button
