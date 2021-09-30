@@ -8,12 +8,13 @@ import {
   verificationRoute, resetToken,
 } from './constants';
 
-export const signIn = data => async dispatch => {
+export const signIn = (data, history) => async dispatch => {
   dispatch({ type: PENDING_REQUEST, payload: 'Loading Content' });
   try {
     const response = await PostRequest(methods.post, signInRoute, data);
     dispatch({ type: AUTHENTICATED });
     localStorage.setItem('user', response?.data?.token);
+    history.push('/dashboard');
   } catch (error) {
     dispatch({ type: AUTHENTICATION_ERROR, payload: error?.message });
   }
@@ -33,7 +34,6 @@ export const forgotPassword = data => async dispatch => {
   dispatch({ type: PENDING_REQUEST, payload: 'Loading Content' });
   try {
     const response = await PostRequest(methods.post, verificationRoute, data);
-    console.log(response?.data, 'response data');
     dispatch({ type: PASSWORD_RESET, payload: response?.data });
   } catch (error) {
     dispatch({ type: AUTHENTICATION_ERROR, payload: error?.message });
