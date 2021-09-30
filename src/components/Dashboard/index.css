@@ -1,0 +1,56 @@
+.page-nav-section {
+  display: flex;
+  padding: 8px 20px;
+  background-color: #fff;
+}
+
+.left-current-user-image-icon {
+  width: 100px;
+}
+
+.righ-current-user-image-icon {
+  flex: 1;
+  display: flex;
+}
+
+.righ-current-user-image-icon svg {
+  cursor: pointer;
+}
+
+.nav-links-section {
+  flex: 5;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+}
+
+.nav-links-section a {
+  padding: 0 30px;
+  text-decoration: none;
+  color: #03072c;
+}
+
+.inner-righ-current-user-image-icon {
+  display: flex;
+  width: 290px;
+  align-items: center;
+}
+
+.svg-before-name {
+  margin: 0 10px;
+}
+
+.current-user-profile {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #03072c;
+  margin: 0 5px;
+}
+
+.current-user-name {
+  width: 150px;
+  font-weight: 600;
+  color: #03072c;
+  display: flex;
+}
