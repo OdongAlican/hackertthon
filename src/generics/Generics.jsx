@@ -5,6 +5,10 @@
 
 import React from 'react';
 import './index.css';
+import { NavLink, Route } from 'react-router-dom';
+import PendingPurchases from '../components/Dashboard/SubRoutes/Purchase/PendingPurchases';
+import RecievedPurchase from '../components/Dashboard/SubRoutes/Purchase/RecievedPurchase';
+import FailedPurchase from '../components/Dashboard/SubRoutes/Purchase/FailedPurchase';
 
 export const Input = ({
   inputSize, inputName, changeValue, inputType,
@@ -83,5 +87,78 @@ export const ScreenModal = ({
         { textTwo }
       </div>
     </div>
+  </div>
+);
+
+export const RoutesCard = ({ children }) => (
+  <div className="routes-section-card">
+    <div className="main-routes-card-header">Your Sales</div>
+    <div className="mini-routes-card-header">
+      select and view all your past sales
+    </div>
+    <div className="inner-nested-routes">
+      { children }
+    </div>
+  </div>
+);
+
+export const InnerRoutesHeader = ({ nestedRecievedPath, nestedPendingPath, nestedFailedPath }) => (
+  <div className="inner-nest-routes-header">
+    <NavLink to={nestedRecievedPath}>RECIEVED</NavLink>
+    <NavLink to={nestedPendingPath}>PENDING</NavLink>
+    <NavLink to={nestedFailedPath}>FAILED</NavLink>
+  </div>
+);
+
+export const ProductCard = ({
+  productCardName, productCardSeller, productCardDate, productCardAmount,
+}) => (
+  <div className="product-card-section">
+    <div className="product-card-section-header">{productCardName }</div>
+    <div className="product-card-section-photo" />
+    <div className="product-card-section-seller">
+      <div className="product-card-section-seller-title">
+        SELLER
+        {' '}
+        {' '}
+        :
+        {' '}
+        <span>{ productCardSeller}</span>
+      </div>
+    </div>
+    <div className="date-recieved-total-amount">
+      <div className="date-recieved-total-amount-icon">
+        <div className="circular-tick-section" />
+        <svg width="18" height="14" viewBox="0 0 18 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M5.99996 11.2001L1.79996 7.0001L0.399963 8.4001L5.99996 14.0001L18 2.0001L16.6 0.600098L5.99996 11.2001Z" fill="#19BD22" />
+        </svg>
+      </div>
+      <div className="date-recieved-total-amount-second border-right-importance">
+        <h4>DATE RECIEVED</h4>
+        <h5>{productCardDate}</h5>
+      </div>
+      <div className="date-recieved-total-amount-second">
+        <h4>TOTAL AMOUNT</h4>
+        <h5>{productCardAmount}</h5>
+      </div>
+    </div>
+    <div className="recieved-button-section">
+      <Button buttonName="VIEW DETAILS" buttonSize="large" />
+    </div>
+  </div>
+);
+
+export const InnerRoutesCardOne = ({ children, path }) => (
+  <div className="inner-routes-card-one">
+    <Route exact path={`${path}`} component={() => <RecievedPurchase Card={ProductCard} />} />
+    <Route exact path={`${path}/pending`} component={PendingPurchases} />
+    <Route exact path={`${path}/failed`} component={FailedPurchase} />
+    { children }
+  </div>
+);
+
+export const InnerRoutesWrapper = ({ children }) => (
+  <div className="inner-routes-wrapper">
+    { children }
   </div>
 );
