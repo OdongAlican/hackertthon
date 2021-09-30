@@ -12,7 +12,7 @@ const Router = () => (
         <Route exact path="/" component={Login} />
         <Route exact path="/signup" component={Signup} />
         <Route exact path="/forgetpassword" component={PasswordForget} />
-        <Route exact path="/forgetreset" component={PasswordReset} />
+        <Route exact path="/forgetreset/:token" component={PasswordReset} />
       </Switch>
     </BrowserRouter>
   </div>
