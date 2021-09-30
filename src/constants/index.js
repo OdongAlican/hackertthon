@@ -33,3 +33,17 @@ export const resetPasswordConstants = {
       your current password
     `,
 };
+
+export const forgotPasswordModal = {
+  icon: 'fas fa-link',
+  header: 'Reset Link sent!',
+  textOne: 'A  link has been sent to',
+  textTwo: 'Kindly check your inbox or spam folder for the reset link',
+};
+
+export const passwordResetModal = {
+  icon: 'far fa-envelope',
+  header: 'Password Successful!',
+  textOne: 'Your password has been saved successfully. kindly login to',
+  textTwo: 'access your account',
+};
