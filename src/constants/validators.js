@@ -12,9 +12,10 @@ export const authValidator = (values, state) => {
       errorValues.userEmail = 'Invalid email';
     }
     if (!values.password) {
-      errorValues.password = 'Passord Required';
+      errorValues.password = 'Password Required';
     }
   }
+
   if (state === 'signup') {
     errorValues.state = 'signup state';
     if (!values.first_name) {
@@ -30,23 +31,32 @@ export const authValidator = (values, state) => {
       errorValues.userEmail = 'Invalid email';
     }
     if (!values.password) {
-      errorValues.password = 'Passord Required';
+      errorValues.password = 'Password Required';
     }
     if (values.confirm_password !== values.password && values.confirm_password) {
       errorValues.confirm_password = 'Passwords Do not match';
     }
   }
 
-  return errorValues;
-};
+  if (state === 'verification') {
+    errorValues.state = 'verification state';
+    if (!values.userEmail) {
+      errorValues.userEmail = 'Email required';
+    }
+    if (!emailRegex.test(values.userEmail) && values.userEmail) {
+      errorValues.userEmail = 'Invalid email';
+    }
+  }
 
-export const newPasswordValidator = values => {
-  const errorValues = {};
-  if (!values.newpasswordemail) {
-    errorValues.newpasswordemail = 'Email required';
+  if (state === 'reset') {
+    errorValues.state = 'reset state';
+    if (!values.password) {
+      errorValues.password = 'Password Required';
+    }
+    if (values.confirm_password !== values.password && values.confirm_password) {
+      errorValues.confirm_password = 'Passwords Do not match';
+    }
   }
-  if (!emailRegex.test(values.newpasswordemail) && values.newpasswordemail) {
-    errorValues.newpasswordemail = 'Invalid email';
-  }
+
   return errorValues;
 };
