@@ -3,7 +3,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import '../index.css';
 import Display from '../Display/Display';
 import {
@@ -23,6 +23,7 @@ const Login = () => {
   const [errors, setErrors] = useState({});
   const dispatch = useDispatch();
   const [passwordState, setPasswordState] = useState('password');
+  const history = useHistory();
 
   const togglePassword = () => {
     if (passwordState === 'password') {
@@ -45,7 +46,7 @@ const Login = () => {
   useEffect(() => {
     const errorArray = Object.keys(errors);
     if (errorArray.length === 1 && errorArray.includes('state')) {
-      dispatch(signIn(values));
+      dispatch(signIn(values, history));
     }
   }, [errors]);
 
