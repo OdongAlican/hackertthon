@@ -11,6 +11,9 @@ import {
 import PendingPurchases from '../components/Dashboard/SubRoutes/Purchase/PendingPurchases';
 import RecievedPurchase from '../components/Dashboard/SubRoutes/Purchase/RecievedPurchase';
 import FailedPurchase from '../components/Dashboard/SubRoutes/Purchase/FailedPurchase';
+import RecievedSale from '../components/Dashboard/SubRoutes/Sales/RecievedSale';
+import PendingSales from '../components/Dashboard/SubRoutes/Sales/PendingSales';
+import FailedSales from '../components/Dashboard/SubRoutes/Sales/FailedSales';
 
 export const Input = ({
   inputSize, inputName, changeValue, inputType,
@@ -197,9 +200,27 @@ export const ProductCard = ({
 
 export const InnerRoutesCardOne = ({ path }) => (
   <div className="inner-routes-card-one">
-    <Route exact path={`${path}`} component={() => <RecievedPurchase Card={ProductCard} />} />
-    <Route path={`${path}/pending`} component={() => <PendingPurchases Card={ProductCard} />} />
-    <Route path={`${path}/failed`} component={() => <FailedPurchase Card={ProductCard} />} />
+    <Route exact path={`${path}`}>
+      {
+        path.includes('purchase') ? (<RecievedPurchase Card={ProductCard} />)
+          : path.includes('sales') ? (<RecievedSale Card={ProductCard} />)
+            : null
+      }
+    </Route>
+    <Route path={`${path}/pending`}>
+      {
+        path.includes('purchase') ? (<PendingPurchases Card={ProductCard} />)
+          : path.includes('sales') ? (<PendingSales Card={ProductCard} />)
+            : null
+      }
+    </Route>
+    <Route path={`${path}/failed`}>
+      {
+        path.includes('purchase') ? (<FailedPurchase Card={ProductCard} />)
+          : path.includes('sales') ? (<FailedSales Card={ProductCard} />)
+            : null
+      }
+    </Route>
   </div>
 );
 
