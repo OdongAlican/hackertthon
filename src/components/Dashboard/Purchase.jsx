@@ -13,11 +13,7 @@ const Purchase = () => {
   return (
     <InnerRoutesWrapper>
       <Router>
-        <InnerRoutesHeader
-          nestedRecievedPath={`${url}`}
-          nestedPendingPath={`${url}/pending`}
-          nestedFailedPath={`${url}/failed`}
-        />
+        <InnerRoutesHeader url={url} />
         <InnerRoutesCardOne path={path} />
       </Router>
     </InnerRoutesWrapper>
