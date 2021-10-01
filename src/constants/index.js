@@ -47,3 +47,34 @@ export const passwordResetModal = {
   textOne: 'Your password has been saved successfully. kindly login to',
   textTwo: 'access your account',
 };
+
+export const array = [
+  {
+    id: 1,
+    productCardName: 'Zara Dress',
+    productCardSeller: 'David & Sons Limited',
+    productCardDate: '20/19/2021',
+    productCardAmount: '$ 2000',
+  },
+  {
+    id: 2,
+    productCardName: 'Zara Dress',
+    productCardSeller: 'David & Sons Limited',
+    productCardDate: '20/19/2021',
+    productCardAmount: '$ 2000',
+  },
+  {
+    id: 3,
+    productCardName: 'Zara Dress',
+    productCardSeller: 'David & Sons Limited',
+    productCardDate: '20/19/2021',
+    productCardAmount: '$ 2000',
+  },
+  {
+    id: 4,
+    productCardName: 'Zara Dress',
+    productCardSeller: 'David & Sons Limited',
+    productCardDate: '20/19/2021',
+    productCardAmount: '$ 2000',
+  },
+];
