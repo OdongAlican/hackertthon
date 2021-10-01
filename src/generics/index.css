@@ -253,7 +253,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.date-recieved-total-amount-icon-inner {
   position: relative;
+  display: flex;
+  align-items: center;  
+  justify-content: center;
 }
 
 .circular-tick-section {
@@ -263,8 +269,12 @@
   background-color: #A9FFAD;
 }
 
+.circular-tick-section-failed {
+  background: #FFDCDC;
+}
+
 .date-recieved-total-amount-icon svg {
-  position: absolute;  
+  position: absolute;
 }
 
 .recieved-button-section {
@@ -273,4 +283,9 @@
   justify-content: center;
   width: 100%;
   padding: 20px 20px 10px;
+}
+
+.current-navlink {
+  font-weight: bold;
+  color: #03072c;
 }
