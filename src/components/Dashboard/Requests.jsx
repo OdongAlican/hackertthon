@@ -1,9 +1,15 @@
 import React from 'react';
+import {
+  InnerRoutesWrapper, InnerRoutesCardTwoSection,
+  InnerRoutesCardTwo,
+} from '../../generics/Generics';
 
 const Requests = () => (
-  <div>
-    <p>Requests</p>
-  </div>
+  <InnerRoutesWrapper>
+    <InnerRoutesCardTwo>
+      <InnerRoutesCardTwoSection />
+    </InnerRoutesCardTwo>
+  </InnerRoutesWrapper>
 );
 
 export default Requests;
