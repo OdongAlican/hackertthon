@@ -13,7 +13,9 @@
 
 .small-button-section,
 .medium-button-section,
-.large-button-section {
+.large-button-section,
+.request-button-styles,
+.request-button-styles-accepted {
   padding: 8px 20px;
   border: none;
   border-radius: 3px;
@@ -23,6 +25,16 @@
   cursor: pointer;
   font-weight: 600;
   outline: none;
+}
+
+.request-button-styles {
+  background-color: #fff;
+  border: 2px solid  #172AD2;
+  color: #172AD2;
+}
+
+.request-button-styles-accepted {
+  background: #51CF58;
 }
 
 .small-input-section,
@@ -179,6 +191,31 @@
   margin: 30px 0;
 }
 
+.inner-routes-card-two {
+  margin: 30px 0;
+  max-height: 65vh;
+}
+
+.inner-routes-card-two-innner-section {
+  display: flex;
+  background-color: #fff;
+  border: 5px;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 4px 4px 24px 4px rgba(134, 136, 153, 0.12);
+}
+
+.inner-routes-card-two-left,
+.inner-routes-card-two-right {
+  flex: 1;
+}
+
+.inner-routes-card-two-right {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
 .product-card-section {
   box-shadow: 4px 4px 24px 4px rgba(134, 136, 153, 0.12);
   padding: 15px 0;
@@ -288,4 +325,61 @@
 .current-navlink {
   font-weight: bold;
   color: #03072c;
+}
+
+.product-title-and-price-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 4fr;
+  font-weight: bold;
+  grid-column-gap: 10px;
+}
+
+.product-title-and-price {
+  display: flex;
+  align-items: center;
+  margin: 5px 0 15px;
+}
+
+.date-of-order-product-header {
+  font-size: 12px;
+  color: #868899;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.date-of-order-product-content {
+  font-size: 14px;
+  color: #03072C;
+  font-weight: bold;
+}
+
+.product-title-and-price-image {
+  width: 32px;
+  height: 32px;
+  background-color: #03072C;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.product-title-and-price-image-first {
+  color: #03072C;
+  font-size: 20px;
+  font-weight: 600;
+  margin-right: 5px;
+}
+
+.product-title-and-price-image-second {
+  color: #172AD2;
+  font-size: 20px;
+  font-weight: 600;
+  margin-left: 5px;
+}
+
+.dot-svg-section {
+  margin-right: 5px;
+}
+
+.inner-routes-card-two-right-first,
+.inner-routes-card-two-right-second {
+  margin-right: 10px;
 }
