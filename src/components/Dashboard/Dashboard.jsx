@@ -46,9 +46,9 @@ const Dashboard = () => {
         </div>
         <RoutesCard>
           <Route exact path={`${path}`} component={Home} />
-          <Route exact path={`${path}/purchase`} component={Purchase} />
-          <Route exact path={`${path}/sales`} component={Sales} />
-          <Route exact path={`${path}/requests`} component={Requests} />
+          <Route path={`${path}/purchase`} component={Purchase} />
+          <Route path={`${path}/sales`} component={Sales} />
+          <Route path={`${path}/requests`} component={Requests} />
         </RoutesCard>
       </Router>
     </div>
