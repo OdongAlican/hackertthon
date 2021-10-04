@@ -78,3 +78,30 @@ export const array = [
     productCardAmount: '$ 2000',
   },
 ];
+
+export const requestArray = [
+  {
+    id: 1,
+    title: 'When Science and Design Principles Meet',
+    price: '25,000',
+    orderDate: '01/08/2021',
+    deliveryDate: '01/08/2021',
+    seller: 'Smart Thimking Bookshop',
+  },
+  {
+    id: 2,
+    title: 'When Science and Design Principles Meet',
+    price: '25,000',
+    orderDate: '01/08/2021',
+    deliveryDate: '01/08/2021',
+    seller: 'Smart Thimking Bookshop',
+  },
+  {
+    id: 3,
+    title: 'When Science and Design Principles Meet',
+    price: '25,000',
+    orderDate: '01/08/2021',
+    deliveryDate: '01/08/2021',
+    seller: 'Smart Thimking Bookshop',
+  },
+];
