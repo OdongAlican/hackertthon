@@ -203,14 +203,16 @@
   padding: 20px;
   border-radius: 5px;
   box-shadow: 4px 4px 24px 4px rgba(134, 136, 153, 0.12);
+  margin-bottom: 15px;
 }
 
 .inner-routes-card-two-left,
 .inner-routes-card-two-right {
-  flex: 1;
+  flex: 4;
 }
 
 .inner-routes-card-two-right {
+  flex: 2;
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -331,6 +333,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr 4fr;
   font-weight: bold;
+  width: 80%;
   grid-column-gap: 10px;
 }
 
