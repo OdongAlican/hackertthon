@@ -12,11 +12,15 @@ import initialState from './login.test';
 afterEach(cleanup);
 let store;
 
+const authentication = {
+  emailContent: { email: 'test@gmail.com' },
+  passwordMessage: { message: 'messaze' },
+};
 const middlewares = [thunk];
 const mockStore = configureStore(middlewares);
 
 it('renders password reset correctly', () => {
-  store = mockStore(initialState);
+  store = mockStore({ ...initialState, authentication });
   const { getAllByTestId } = render(
     <Router>
       <Provider store={store}><PasswordReset /></Provider>

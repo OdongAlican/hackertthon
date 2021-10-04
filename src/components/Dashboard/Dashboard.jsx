@@ -14,7 +14,7 @@ import Requests from './Requests';
 const Dashboard = () => {
   const { url, path } = useRouteMatch();
   return (
-    <div>
+    <div data-testid="appDashboard">
       <Router>
         <div className="page-nav-section">
           <div className="left-current-user-image-icon">
