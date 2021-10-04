@@ -5,6 +5,7 @@ import Signup from '../Authentication/Signup/Signup';
 import PasswordForget from '../Authentication/PasswordForget/PasswordForget';
 import PasswordReset from '../Authentication/PasswordReset/PasswordReset';
 import Dashboard from '../Dashboard/Dashboard';
+import PrivateRoute from '../PrivateRoute/PrivateRoute';
 
 const Router = () => (
   <div>
@@ -14,7 +15,7 @@ const Router = () => (
         <Route path="/signup" component={Signup} />
         <Route path="/forgetpassword" component={PasswordForget} />
         <Route path="/forgetreset/:token" component={PasswordReset} />
-        <Route path="/dashboard" component={Dashboard} />
+        <PrivateRoute path="/dashboard" component={Dashboard} />
       </Switch>
     </BrowserRouter>
   </div>
