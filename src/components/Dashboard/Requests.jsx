@@ -3,11 +3,16 @@ import {
   InnerRoutesWrapper, InnerRoutesCardTwoSection,
   InnerRoutesCardTwo,
 } from '../../generics/Generics';
+import { requestArray } from '../../constants/index';
 
 const Requests = () => (
   <InnerRoutesWrapper>
     <InnerRoutesCardTwo>
-      <InnerRoutesCardTwoSection />
+      {
+        requestArray.map(
+          element => <InnerRoutesCardTwoSection key={element.id} element={element} />,
+        )
+      }
     </InnerRoutesCardTwo>
   </InnerRoutesWrapper>
 );
