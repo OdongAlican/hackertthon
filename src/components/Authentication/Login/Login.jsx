@@ -35,10 +35,7 @@ const Login = () => {
 
   const handleChange = e => {
     const { value, name } = e.target;
-    setValues({
-      ...values,
-      [name]: value,
-    });
+    setValues({ ...values, [name]: value });
   };
 
   const submitLogin = () => setErrors(authValidator(values, 'signin'));
@@ -100,6 +97,7 @@ const Login = () => {
       <div className="display-logo-section">
         <Display />
       </div>
+
     </div>
   );
 };

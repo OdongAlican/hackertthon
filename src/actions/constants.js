@@ -10,7 +10,7 @@ export const methods = {
   get: 'get', post: 'post', delete: 'delete', put: 'put',
 };
 
-export const baseUrl = 'http://localhost:8000/api/users';
+export const baseUrl = 'http://localhost:3000';
 export const signUpRoute = 'register';
 export const signInRoute = 'login';
 export const verificationRoute = 'verificationmail';

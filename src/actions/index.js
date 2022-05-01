@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { PostRequest, GetRequest } from '../utils/index';
 import {
   AUTHENTICATED, UNAUTHENTICATED,
@@ -9,13 +10,16 @@ import {
 } from './constants';
 
 export const signIn = (data, history) => async dispatch => {
-  dispatch({ type: PENDING_REQUEST, payload: 'Loading Content' });
+  dispatch({ type: PENDING_REQUEST, payload: 'Signing In' });
   try {
-    const response = await PostRequest(methods.post, signInRoute, data);
+    const request = { email: data?.userEmail, password: data?.password };
+    const response = await PostRequest(methods.post, signInRoute, request);
+
     dispatch({ type: AUTHENTICATED });
-    localStorage.setItem('user', response?.data?.token);
+    localStorage.setItem('user', JSON.stringify(response?.data));
     history.push('/dashboard');
   } catch (error) {
+    console.log(error?.response, 'error');
     dispatch({ type: AUTHENTICATION_ERROR, payload: error?.message });
   }
 };
