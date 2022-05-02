@@ -6,12 +6,11 @@ import { Link, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { resetPasswordConstants, passwordResetModal } from '../../../constants/index';
 import Display from '../Display/Display';
-import {
-  AuthCard, Input, ErrorSection,
-  Button, ScreenModal,
-} from '../../../generics/Generics';
+import { AuthCard, ErrorSection, ScreenModal } from '../../../generics/Generics';
+import { Input } from '../../../generics/Input';
 import { fetchResetToken, resetPassword } from '../../../actions';
 import { authValidator } from '../../../constants/validators';
+import Button from '../../../generics/Button';
 
 const initialState = {
   password: '',
@@ -84,15 +83,15 @@ const PasswordReset = () => {
   return (
     <div data-testid="forgetReset" className="main-login-section">
       {displayModal
-      && (
-      <ScreenModal
-        icon={passwordResetModal.icon}
-        header={passwordResetModal.header}
-        textOne={passwordResetModal.textOne}
-        textTwo={passwordResetModal.textTwo}
-        closeModal={closeModal}
-      />
-      )}
+        && (
+          <ScreenModal
+            icon={passwordResetModal.icon}
+            header={passwordResetModal.header}
+            textOne={passwordResetModal.textOne}
+            textTwo={passwordResetModal.textTwo}
+            closeModal={closeModal}
+          />
+        )}
       <div className="welcome-section">
         <AuthCard
           pageMainHeader={resetPasswordConstants.pageMainHeader}
@@ -111,7 +110,7 @@ const PasswordReset = () => {
                 ? (<i className="fas fa-eye-slash" onClick={() => togglePassword('password')} />)
                 : (<i className="fas fa-eye" onClick={() => togglePassword('password')} />)
             }
-            { errors.password && <ErrorSection message={errors.password} />}
+            {errors.password && <ErrorSection message={errors.password} />}
           </div>
           <div className="login-password-section mt-3">Confirm Password</div>
           <div className="login-password-input mb-3">
@@ -125,7 +124,7 @@ const PasswordReset = () => {
                 ? (<i className="fas fa-eye-slash" onClick={() => togglePassword('confirm_password')} />)
                 : (<i className="fas fa-eye" onClick={() => togglePassword('confirm_password')} />)
             }
-            { errors.confirm_password && <ErrorSection message={errors.confirm_password} />}
+            {errors.confirm_password && <ErrorSection message={errors.confirm_password} />}
           </div>
           <div className="login-button-section mt-4">
             <Button

@@ -5,19 +5,15 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import Display from '../Display/Display';
-import {
-  AuthCard, Input, Button, ErrorSection,
-} from '../../../generics/Generics';
+import { AuthCard } from '../../../generics/Generics';
+import { Input, PasswordInput } from '../../../generics/Input';
 import { signupConstants } from '../../../constants/index';
 import { authValidator } from '../../../constants/validators';
 import { signUp } from '../../../actions';
+import Button from '../../../generics/Button';
 
 const initialState = {
-  first_name: '',
-  last_name: '',
-  userEmail: '',
-  password: '',
-  confirm_password: '',
+  first_name: '', last_name: '', userEmail: '', password: '', confirm_password: '',
 };
 
 const Signup = () => {
@@ -27,21 +23,14 @@ const Signup = () => {
   const [confirmPasswordState, setConfirmPasswordState] = useState('password');
   const dispatch = useDispatch();
 
-  const togglePassword = value => {
-    if (value === 'password') {
-      if (passwordState === 'password') {
-        setPasswordState('text');
-      } else {
-        setPasswordState('password');
-      }
-    }
-    if (value === 'confirm_password') {
-      if (confirmPasswordState === 'password') {
-        setConfirmPasswordState('text');
-      } else {
-        setConfirmPasswordState('password');
-      }
-    }
+  const togglePassword = () => {
+    if (passwordState === 'password') return setPasswordState('text');
+    return setPasswordState('password');
+  };
+
+  const toggleConfirmPassword = () => {
+    if (confirmPasswordState === 'password') return setConfirmPasswordState('text');
+    return setConfirmPasswordState('password');
   };
 
   const handleChange = e => {
@@ -62,75 +51,69 @@ const Signup = () => {
   }, [errors]);
 
   return (
-    <div className="main-signup-section">
-      <div className="welcome-section">
+    <div className="d-flex">
+      <div className="col-md-6 col-sm-12">
         <AuthCard
           pageMainHeader={signupConstants.pageMainHeader}
           pageMiniHeader={signupConstants.pageMiniHeader}
           pageExtraHeading={signupConstants.pageExtraHeading}
         >
-          <div className="first-name-second-name-section mt-3">
-            <div className="sign-up-first-name">
-              <div className="sign-up-first-name-label">First Name</div>
-              <div className="sign-up-first-name-input">
-                <Input
-                  inputSize="small"
-                  inputName="first_name"
-                  inputType="text"
-                  changeValue={handleChange}
-                />
-                { errors.first_name && <ErrorSection message={errors.first_name} />}
-              </div>
+          <div className="row mt-3">
+            <div className="col-lg-6 col-md-12 col-sm-12">
+              <Input
+                inputName="first_name"
+                errors={errors.first_name}
+                placeholder="Type here ...."
+                label="First Name"
+                inputType="text"
+                changeValue={handleChange}
+              />
             </div>
-            <div className="sign-up-second-name">
-              <div className="sign-up-second-name-label">Last Name</div>
-              <div className="sign-up-second-name-input">
-                <Input
-                  inputSize="small"
-                  inputName="last_name"
-                  inputType="text"
-                  changeValue={handleChange}
-                />
-                { errors.last_name && <ErrorSection message={errors.last_name} />}
-              </div>
+            <div className="col-lg-6 col-md-12 col-sm-12">
+              <Input
+                inputName="last_name"
+                errors={errors.last_name}
+                placeholder="Type here ...."
+                label="Last Name"
+                inputType="text"
+                changeValue={handleChange}
+              />
             </div>
           </div>
-          <div className="login-email-section mt-3">Email Adress</div>
-          <div className="login-email-input">
+          <div className="mt-3">
             <Input
               inputName="userEmail"
-              inputType="text"
+              errors={errors.userEmail}
+              placeholder="Type here ...."
+              label="Email Adress"
+              inputType="email"
+              inputSize="large"
               changeValue={handleChange}
             />
-            { errors.userEmail && <ErrorSection message={errors.userEmail} />}
           </div>
-          <div className="login-password-section mt-3">Password</div>
-          <div className="login-password-input mb-3">
-            <Input
-              inputName="password"
-              changeValue={handleChange}
-              inputType={passwordState}
-            />
-            {
-              passwordState === 'password'
-                ? (<i className="fas fa-eye-slash" onClick={() => togglePassword('password')} />)
-                : (<i className="fas fa-eye" onClick={() => togglePassword('password')} />)
-            }
-            { errors.password && <ErrorSection message={errors.password} />}
-          </div>
-          <div className="login-password-section mt-3">Confirm Password</div>
-          <div className="login-password-input mb-3">
-            <Input
-              inputName="confirm_password"
-              changeValue={handleChange}
-              inputType={confirmPasswordState}
-            />
-            {
-              confirmPasswordState === 'password'
-                ? (<i className="fas fa-eye-slash" onClick={() => togglePassword('confirm_password')} />)
-                : (<i className="fas fa-eye" onClick={() => togglePassword('confirm_password')} />)
-            }
-            { errors.confirm_password && <ErrorSection message={errors.confirm_password} />}
+          <div className="row mt-3">
+            <div className="col-lg-6 col-md-12 col-sm-12">
+              <PasswordInput
+                inputName="password"
+                errors={errors.password}
+                label="Password"
+                inputSize="large"
+                changeValue={handleChange}
+                togglePassword={togglePassword}
+                passwordState={passwordState}
+              />
+            </div>
+            <div className="col-lg-6 col-md-12 col-sm-12">
+              <PasswordInput
+                inputName="confirm_password"
+                errors={errors.confirm_password}
+                label="Confirm Password"
+                inputSize="large"
+                changeValue={handleChange}
+                togglePassword={toggleConfirmPassword}
+                passwordState={confirmPasswordState}
+              />
+            </div>
           </div>
           <div className="login-button-section mt-4">
             <Button
@@ -138,17 +121,16 @@ const Signup = () => {
               clickButton={submitSignUp}
             />
           </div>
-          <div className="dont-have-account">
-            Don&#39;t have an account ?
+          <div className="mt-2">
+            Already have an account ?
             {' '}
-            <Link style={{ color: '#2A57D3' }} to="/">Log In Here</Link>
+            <Link className="fw-bold" style={{ textDecoration: 'none', fontSize: '13px', color: '#2a57d3' }} to="/">Log In Here</Link>
           </div>
         </AuthCard>
       </div>
-      <div className="display-logo-section">
+      <div className="col-md-6 h-100 col-sm-12" style={{ heigth: '100vh' }}>
         <Display />
       </div>
-
     </div>
   );
 };

@@ -4,19 +4,15 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
-import '../index.css';
 import Display from '../Display/Display';
-import {
-  AuthCard, Input, Button, ErrorSection,
-} from '../../../generics/Generics';
+import { AuthCard } from '../../../generics/Generics';
+import { Input, PasswordInput } from '../../../generics/Input';
 import { authValidator } from '../../../constants/validators';
 import { signIn } from '../../../actions';
 import { loginConstants } from '../../../constants/index';
+import Button from '../../../generics/Button';
 
-const initialState = {
-  userEmail: '',
-  password: '',
-};
+const initialState = { userEmail: '', password: '' };
 
 const Login = () => {
   const [values, setValues] = useState(initialState);
@@ -48,56 +44,55 @@ const Login = () => {
   }, [errors]);
 
   return (
-    <div data-testid="appLogin" className="main-login-section">
-      <div className="welcome-section">
+    <div data-testid="appLogin" className="d-flex">
+      <div className="col-md-6 col-sm-12">
         <AuthCard
           pageMainHeader={loginConstants.pageMainHeader}
           pageMiniHeader={loginConstants.pageMiniHeader}
           pageExtraHeading={loginConstants.pageExtraHeading}
         >
-          <div className="login-email-section mt-3">Email Adress</div>
-          <div className="login-email-input">
+          <div className="mt-3">
             <Input
               inputName="userEmail"
+              errors={errors.userEmail}
+              placeholder="Type here ...."
+              label="Email Address"
               inputType="text"
+              inputSize="large"
               changeValue={handleChange}
             />
-            { errors.userEmail && <ErrorSection message={errors.userEmail} />}
           </div>
-          <div className="login-password-section mt-3">Password</div>
-          <div className="login-password-input mb-3">
-            <Input
+          <div className="mt-3">
+            <PasswordInput
               inputName="password"
+              errors={errors.password}
+              label="Password"
+              inputSize="large"
               changeValue={handleChange}
-              inputType={passwordState}
+              togglePassword={togglePassword}
+              passwordState={passwordState}
             />
-            {
-              passwordState === 'password'
-                ? (<i className="fas fa-eye-slash" onClick={togglePassword} />)
-                : (<i className="fas fa-eye" onClick={togglePassword} />)
-            }
-            { errors.password && <ErrorSection message={errors.password} />}
           </div>
-          <Link to="/forgetpassword" className="login-forgot-password-section">
-            Forgotten your password
+          <Link to="/forgetpassword" className="fw-bold" style={{ textDecoration: 'none', fontSize: '13px', color: '#2a57d3' }}>
+            Forgotten your password?
           </Link>
           <div className="login-button-section mt-3">
             <Button
+              buttonSize="large"
               buttonName="Log In"
               clickButton={submitLogin}
             />
           </div>
-          <div className="dont-have-account">
+          <div className="mt-2">
             Don&#39;t have an account ?
             {' '}
-            <Link style={{ color: '#2A57D3' }} to="/signup">Sign Up Here</Link>
+            <Link className="fw-bold" style={{ textDecoration: 'none', fontSize: '13px', color: '#2a57d3' }} to="/signup">Sign Up Here</Link>
           </div>
         </AuthCard>
       </div>
-      <div className="display-logo-section">
+      <div className="col-md-6 h-100 col-sm-12" style={{ heigth: '100vh' }}>
         <Display />
       </div>
-
     </div>
   );
 };

@@ -4,11 +4,10 @@ import { Link, useHistory } from 'react-router-dom';
 import { forgotPassword } from '../../../actions';
 import { forgetPasswordConstants, forgotPasswordModal } from '../../../constants/index';
 import { authValidator } from '../../../constants/validators';
-import {
-  AuthCard, Input, Button,
-  ErrorSection, ScreenModal,
-} from '../../../generics/Generics';
+import { AuthCard, ErrorSection, ScreenModal } from '../../../generics/Generics';
+import { Input } from '../../../generics/Input';
 import Display from '../Display/Display';
+import Button from '../../../generics/Button';
 
 const initialState = { userEmail: '' };
 
@@ -46,16 +45,16 @@ const PasswordForget = () => {
   return (
     <div data-testid="forgetPassword" className="main-login-section">
       {displayModal
-      && (
-      <ScreenModal
-        icon={forgotPasswordModal.icon}
-        header={forgotPasswordModal.header}
-        textOne={forgotPasswordModal.textOne}
-        textTwo={forgotPasswordModal.textTwo}
-        closeModal={closeModal}
-        email={emailContentState.message.to}
-      />
-      )}
+        && (
+          <ScreenModal
+            icon={forgotPasswordModal.icon}
+            header={forgotPasswordModal.header}
+            textOne={forgotPasswordModal.textOne}
+            textTwo={forgotPasswordModal.textTwo}
+            closeModal={closeModal}
+            email={emailContentState.message.to}
+          />
+        )}
       <div className="welcome-section">
         <AuthCard
           pageMainHeader={forgetPasswordConstants.pageMainHeader}
@@ -69,7 +68,7 @@ const PasswordForget = () => {
               inputType="text"
               changeValue={handleChange}
             />
-            { errors.userEmail && <ErrorSection message={errors.userEmail} />}
+            {errors.userEmail && <ErrorSection message={errors.userEmail} />}
           </div>
           <div className="login-button-section mt-4">
             <Button
