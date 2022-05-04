@@ -1,5 +1,8 @@
 import React from 'react';
+import { Dropdown, ButtonGroup } from 'react-bootstrap';
+import { useDispatch } from 'react-redux';
 import {
+  useHistory,
   NavLink, useRouteMatch,
   Route,
   BrowserRouter as Router,
@@ -10,9 +13,21 @@ import Purchase from './Purchase';
 import Home from './Home';
 import Sales from './Sales';
 import Requests from './Requests';
+import { signOut } from '../../actions/index';
+import { capitalize, fetchLoggedInUser } from '../../utils/helpers';
 
 const Dashboard = () => {
   const { url, path } = useRouteMatch();
+  const dispatch = useDispatch();
+  const history = useHistory();
+
+  const logoutFxn = async () => {
+    dispatch(signOut());
+    history.push('/');
+  };
+
+  const currentUser = fetchLoggedInUser();
+
   return (
     <div data-testid="appDashboard">
       <Router>
@@ -37,10 +52,16 @@ const Dashboard = () => {
                 <path d="M7.00006 13.6667C7.73339 13.6667 8.33339 13.0667 8.33339 12.3334H5.66673C5.66673 13.0667 6.26673 13.6667 7.00006 13.6667ZM11.0001 9.66669V6.33335C11.0001 4.28669 9.91339 2.57335 8.00006 2.12002V1.66669C8.00006 1.11335 7.55339 0.666687 7.00006 0.666687C6.44673 0.666687 6.00006 1.11335 6.00006 1.66669V2.12002C4.09339 2.57335 3.00006 4.28002 3.00006 6.33335V9.66669L1.66673 11V11.6667H12.3334V11L11.0001 9.66669ZM9.66673 10.3334H4.33339V6.33335C4.33339 4.68002 5.34006 3.33335 7.00006 3.33335C8.66006 3.33335 9.66673 4.68002 9.66673 6.33335V10.3334ZM4.05339 1.72002L3.10006 0.766687C1.50006 1.98669 0.446727 3.86669 0.353394 6.00002H1.68673C1.78673 4.23335 2.69339 2.68669 4.05339 1.72002ZM12.3134 6.00002H13.6467C13.5467 3.86669 12.4934 1.98669 10.9001 0.766687L9.95339 1.72002C11.3001 2.68669 12.2134 4.23335 12.3134 6.00002Z" fill="#323232" />
               </svg>
               <div className="current-user-profile" />
-              <div className="current-user-name">Alican Sunday</div>
-              <svg className="svg-before-name" width="14" height="14" viewBox="0 0 8 4" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M0.666748 0.666687L4.00008 4.00002L7.33341 0.666687H0.666748Z" fill="#03072C" />
-              </svg>
+              <div className="current-user-name">{`${capitalize(currentUser?.user?.firstname)} ${capitalize(currentUser?.user?.lastname)}`}</div>
+              <Dropdown as={ButtonGroup}>
+                <Dropdown.Toggle split variant="light" id="dropdown-split-basic" />
+                <Dropdown.Menu>
+                  <Dropdown.Item href="#/action-1">Profile</Dropdown.Item>
+                  <Dropdown.Item href="#/action-2">Terms and condition</Dropdown.Item>
+                  <Dropdown.Divider />
+                  <Dropdown.Item onClick={logoutFxn}>Logout</Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
             </div>
           </div>
         </div>

@@ -22,11 +22,8 @@ const Login = () => {
   const history = useHistory();
 
   const togglePassword = () => {
-    if (passwordState === 'password') {
-      setPasswordState('text');
-    } else {
-      setPasswordState('password');
-    }
+    if (passwordState === 'password') return setPasswordState('text');
+    return setPasswordState('password');
   };
 
   const handleChange = e => {

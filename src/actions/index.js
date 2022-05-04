@@ -64,4 +64,7 @@ export const resetPassword = data => async dispatch => {
   }
 };
 
-export const signOut = () => localStorage.removeItem('user');
+export const signOut = () => async dispatch => {
+  dispatch({ type: UNAUTHENTICATED });
+  localStorage.removeItem('user');
+};
