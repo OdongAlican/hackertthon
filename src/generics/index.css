@@ -90,19 +90,6 @@
   font-size: 16px;
 }
 
-.inner-nest-routes-header {
-  display: flex;
-  padding: 10px 0;
-  border-bottom: 2px solid #eaeaea;
-  margin-bottom: 10px;
-}
-
-.inner-nest-routes-header a {
-  text-decoration: none;
-  font-size: 13px;
-  margin-right: 20px;
-}
-
 .inner-routes-card-one {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
