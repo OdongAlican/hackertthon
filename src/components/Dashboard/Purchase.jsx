@@ -1,12 +1,9 @@
 import React from 'react';
-import {
-  useRouteMatch,
-  BrowserRouter as Router,
-} from 'react-router-dom';
-import {
-  InnerRoutesHeader,
-  InnerRoutesCardOne, InnerRoutesWrapper,
-} from '../../generics/Generics';
+import { useRouteMatch, BrowserRouter as Router } from 'react-router-dom';
+
+import { InnerRoutesCardOne } from '../../generics/Generics';
+import InnerRoutesWrapper from '../../generics/InnerRoutesWrapper';
+import InnerRoutesHeader from '../../generics/InnerRoutesHeader';
 
 const Purchase = () => {
   const { url, path } = useRouteMatch();

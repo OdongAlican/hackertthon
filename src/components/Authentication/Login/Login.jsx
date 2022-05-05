@@ -5,7 +5,7 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
 import Display from '../Display/Display';
-import { AuthCard } from '../../../generics/Generics';
+import AuthCard from '../../../generics/AuthCard';
 import { Input, PasswordInput } from '../../../generics/Input';
 import { authValidator } from '../../../constants/validators';
 import { signIn } from '../../../actions';

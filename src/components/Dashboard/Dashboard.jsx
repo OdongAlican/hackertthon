@@ -8,7 +8,7 @@ import {
   BrowserRouter as Router,
 } from 'react-router-dom';
 import './index.css';
-import { RoutesCard } from '../../generics/Generics';
+import RoutesCard from '../../generics/RoutesCard';
 import Purchase from './Purchase';
 import Home from './Home';
 import Sales from './Sales';

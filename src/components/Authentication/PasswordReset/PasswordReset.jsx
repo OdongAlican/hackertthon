@@ -6,8 +6,9 @@ import { Link, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { resetPasswordConstants, passwordResetModal } from '../../../constants/index';
 import Display from '../Display/Display';
-import { AuthCard, ErrorSection, ScreenModal } from '../../../generics/Generics';
-import { Input } from '../../../generics/Input';
+import ScreenModal from '../../../generics/ScreenModal';
+import AuthCard from '../../../generics/AuthCard';
+import { PasswordInput } from '../../../generics/Input';
 import { fetchResetToken, resetPassword } from '../../../actions';
 import { authValidator } from '../../../constants/validators';
 import Button from '../../../generics/Button';
@@ -33,21 +34,14 @@ const PasswordReset = () => {
     dispatch(fetchResetToken(token));
   }, []);
 
-  const togglePassword = value => {
-    if (value === 'password') {
-      if (passwordState === 'password') {
-        setPasswordState('text');
-      } else {
-        setPasswordState('password');
-      }
-    }
-    if (value === 'confirm_password') {
-      if (confirmPasswordState === 'password') {
-        setConfirmPasswordState('text');
-      } else {
-        setConfirmPasswordState('password');
-      }
-    }
+  const togglePassword = () => {
+    if (passwordState === 'password') return setPasswordState('text');
+    return setPasswordState('password');
+  };
+
+  const toggleConfirmPassword = () => {
+    if (confirmPasswordState === 'password') return setConfirmPasswordState('text');
+    return setConfirmPasswordState('password');
   };
 
   useEffect(() => {
@@ -81,7 +75,7 @@ const PasswordReset = () => {
   }, [errors]);
 
   return (
-    <div data-testid="forgetReset" className="main-login-section">
+    <div data-testid="forgetReset" className="d-flex">
       {displayModal
         && (
           <ScreenModal
@@ -92,59 +86,50 @@ const PasswordReset = () => {
             closeModal={closeModal}
           />
         )}
-      <div className="welcome-section">
+      <div className="col-md-6 col-sm-12">
         <AuthCard
           pageMainHeader={resetPasswordConstants.pageMainHeader}
           pageMiniHeader={resetPasswordConstants.pageMiniHeader}
           pageExtraHeading={resetPasswordConstants.pageExtraHeading}
         >
-          <div className="login-password-section mt-3">Password</div>
-          <div className="login-password-input mb-3">
-            <Input
+          <div className="col-md-12 col-sm-12 mt-3">
+            <PasswordInput
               inputName="password"
+              errors={errors.password}
+              label="Password"
+              inputSize="large"
               changeValue={handleChange}
-              inputType={passwordState}
+              togglePassword={togglePassword}
+              passwordState={passwordState}
             />
-            {
-              passwordState === 'password'
-                ? (<i className="fas fa-eye-slash" onClick={() => togglePassword('password')} />)
-                : (<i className="fas fa-eye" onClick={() => togglePassword('password')} />)
-            }
-            {errors.password && <ErrorSection message={errors.password} />}
           </div>
-          <div className="login-password-section mt-3">Confirm Password</div>
-          <div className="login-password-input mb-3">
-            <Input
+          <div className="col-md-12 col-sm-12 mt-3">
+            <PasswordInput
               inputName="confirm_password"
+              errors={errors.confirm_password}
+              label="Confirm Password"
+              inputSize="large"
               changeValue={handleChange}
-              inputType={confirmPasswordState}
+              togglePassword={toggleConfirmPassword}
+              passwordState={confirmPasswordState}
             />
-            {
-              confirmPasswordState === 'password'
-                ? (<i className="fas fa-eye-slash" onClick={() => togglePassword('confirm_password')} />)
-                : (<i className="fas fa-eye" onClick={() => togglePassword('confirm_password')} />)
-            }
-            {errors.confirm_password && <ErrorSection message={errors.confirm_password} />}
           </div>
-          <div className="login-button-section mt-4">
+          <div className="mt-4">
             <Button
               buttonName="Send Reset Link"
               clickButton={submitNewInformation}
             />
           </div>
-          <div className="horizontal-or-section mt-3">
-            {' '}
-            <span>OR</span>
-          </div>
-          <Link to="/signup" className="go-back-links mt-3">
+          <div className="mt-2 fw-bold h6 text-center" style={{ fontSize: '13px' }}>OR</div>
+          <Link to="/signup" className="fw-bold btn btn-light col-md-12" style={{ textDecoration: 'none', fontSize: '13px' }}>
             Go to sign up
           </Link>
-          <Link to="/" className="go-back-links mt-2">
+          <Link to="/" className="fw-bold btn btn-secondary col-md-12 mt-2" style={{ textDecoration: 'none', fontSize: '13px' }}>
             Go to Log in
           </Link>
         </AuthCard>
       </div>
-      <div className="display-logo-section">
+      <div className="col-md-6 h-100 col-sm-12" style={{ heigth: '100vh' }}>
         <Display />
       </div>
     </div>

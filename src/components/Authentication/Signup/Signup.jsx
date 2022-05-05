@@ -5,7 +5,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import Display from '../Display/Display';
-import { AuthCard } from '../../../generics/Generics';
+import AuthCard from '../../../generics/AuthCard';
 import { Input, PasswordInput } from '../../../generics/Input';
 import { signupConstants } from '../../../constants/index';
 import { authValidator } from '../../../constants/validators';
@@ -35,10 +35,7 @@ const Signup = () => {
 
   const handleChange = e => {
     const { name, value } = e.target;
-    setValues({
-      ...values,
-      [name]: value,
-    });
+    setValues({ ...values, [name]: value });
   };
 
   const submitSignUp = () => setErrors(authValidator(values, 'signup'));

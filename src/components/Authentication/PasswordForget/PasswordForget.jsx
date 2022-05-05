@@ -4,7 +4,8 @@ import { Link, useHistory } from 'react-router-dom';
 import { forgotPassword } from '../../../actions';
 import { forgetPasswordConstants, forgotPasswordModal } from '../../../constants/index';
 import { authValidator } from '../../../constants/validators';
-import { AuthCard, ErrorSection, ScreenModal } from '../../../generics/Generics';
+import ScreenModal from '../../../generics/ScreenModal';
+import AuthCard from '../../../generics/AuthCard';
 import { Input } from '../../../generics/Input';
 import Display from '../Display/Display';
 import Button from '../../../generics/Button';
@@ -21,10 +22,7 @@ const PasswordForget = () => {
 
   const handleChange = e => {
     const { name, value } = e.target;
-    setValues({
-      ...values,
-      [name]: value,
-    });
+    setValues({ ...values, [name]: value });
   };
 
   const submitNewPassword = () => setErrors(authValidator(values, 'verification'));
@@ -43,7 +41,7 @@ const PasswordForget = () => {
     }
   }, [errors]);
   return (
-    <div data-testid="forgetPassword" className="main-login-section">
+    <div data-testid="forgetPassword" className="d-flex">
       {displayModal
         && (
           <ScreenModal
@@ -55,40 +53,39 @@ const PasswordForget = () => {
             email={emailContentState.message.to}
           />
         )}
-      <div className="welcome-section">
+      <div className="col-md-6 col-sm-12">
         <AuthCard
           pageMainHeader={forgetPasswordConstants.pageMainHeader}
           pageMiniHeader={forgetPasswordConstants.pageMiniHeader}
           pageExtraHeading={forgetPasswordConstants.pageExtraHeading}
         >
-          <div className="login-email-section mt-3">Email Adress</div>
-          <div className="login-email-input">
+          <div className="col-md-12 col-sm-12 mt-3">
             <Input
               inputName="userEmail"
+              errors={errors.userEmail}
+              placeholder="Type here ...."
+              label="Email Address"
               inputType="text"
+              inputSize="large"
               changeValue={handleChange}
             />
-            {errors.userEmail && <ErrorSection message={errors.userEmail} />}
           </div>
-          <div className="login-button-section mt-4">
+          <div className="mt-4">
             <Button
               buttonName="Send Reset Link"
               clickButton={submitNewPassword}
             />
           </div>
-          <div className="horizontal-or-section mt-3">
-            {' '}
-            <span>OR</span>
-          </div>
-          <Link to="/signup" className="go-back-links mt-3">
+          <div className="mt-2 fw-bold h6 text-center" style={{ fontSize: '13px' }}>OR</div>
+          <Link to="/signup" className="fw-bold btn btn-light col-md-12" style={{ textDecoration: 'none', fontSize: '13px' }}>
             Go to sign up
           </Link>
-          <Link to="/" className="go-back-links mt-2">
+          <Link to="/" className="fw-bold btn btn-secondary col-md-12 mt-2" style={{ textDecoration: 'none', fontSize: '13px' }}>
             Go to Log in
           </Link>
         </AuthCard>
       </div>
-      <div className="display-logo-section">
+      <div className="col-md-6 h-100 col-sm-12" style={{ heigth: '100vh' }}>
         <Display />
       </div>
     </div>
