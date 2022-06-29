@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Display = () => (
-  <div className="main-page-blue pt-4" style={{ height: '100vh' }}>
+  <div className="main-page-blue pt-4 w-100">
     <div className="main-page-yellow w-50 text-center h6 p-2 fw-bold" style={{ borderRadius: '20px', marginLeft: '10%' }}>
       TRANSPARENT PAYMENT APPLICATION
     </div>

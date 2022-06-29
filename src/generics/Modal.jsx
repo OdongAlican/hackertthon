@@ -7,8 +7,8 @@ const ModalComponent = ({
   show, showFxn, children, title,
 }) => (
   <Modal size="lg" show={show} onHide={() => showFxn(false)}>
-    <Modal.Header closeButton>
-      <Modal.Title id="example-modal-sizes-title-lg">
+    <Modal.Header closeButton style={{ border: 'none' }}>
+      <Modal.Title className="fw-bold">
         Create New
         {' '}
         {title}

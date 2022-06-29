@@ -6,6 +6,7 @@ import { determineTitle } from '../utils/helpers';
 
 import Button from './Button';
 import ModalComponent from './Modal';
+import CreateProduct from '../components/Dashboard/SubRoutes/Sales/CreateProduct';
 
 const InnerRoutesHeader = ({ url }) => {
   const [showModal, setShowModal] = useState(false);
@@ -13,14 +14,16 @@ const InnerRoutesHeader = ({ url }) => {
 
   return (
     <>
-      <ModalComponent show={showModal} showFxn={setShowModal} title={determineTitle(url)} />
+      <ModalComponent show={showModal} showFxn={setShowModal} title={determineTitle(url)}>
+        <CreateProduct />
+      </ModalComponent>
       <div className="d-flex align-items-center mt-2 py-2" style={{ borderBottom: '1px solid #eaeaea', fontSize: '13px' }}>
         <NavLink exact activeClassName="current-navlink" style={{ textDecoration: 'none', marginRight: '20px' }} to={`${url}`}>RECIEVED</NavLink>
         <NavLink exact activeClassName="current-navlink" style={{ textDecoration: 'none', marginRight: '20px' }} to={`${url}/pending`}>PENDING</NavLink>
         <NavLink exact activeClassName="current-navlink" style={{ textDecoration: 'none', marginRight: '20px' }} to={`${url}/failed`}>FAILED</NavLink>
         <div className="ml-auto row" style={{ marginLeft: 'auto' }}>
           <div className="col-md-8">
-            <input type="text" placeholder="Filter product by name" className="form-control shadow-sm" />
+            <input type="text" placeholder="Filter product by name" className="form-control" />
           </div>
           <div className="col-md-4">
             <Button buttonName="+ New" clickButton={createNew} />

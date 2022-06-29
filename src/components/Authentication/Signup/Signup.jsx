@@ -4,7 +4,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import Display from '../Display/Display';
+// import Display from '../Display/Display';
 import AuthCard from '../../../generics/AuthCard';
 import { Input, PasswordInput } from '../../../generics/Input';
 import { signupConstants } from '../../../constants/index';
@@ -126,7 +126,7 @@ const Signup = () => {
         </AuthCard>
       </div>
       <div className="col-md-6 h-100 col-sm-12" style={{ heigth: '100vh' }}>
-        <Display />
+        {/* <Display /> */}
       </div>
     </div>
   );

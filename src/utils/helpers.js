@@ -7,4 +7,4 @@ export const fetchLoggedInUser = () => {
 
 export const capitalize = str => str.charAt(0).toUpperCase() + str.slice(1);
 
-export const determineTitle = string => string.includes('sales') ? 'Sales' : 'Purchase';
+export const determineTitle = string => string.includes('sales') ? 'Product' : 'Purchase';
