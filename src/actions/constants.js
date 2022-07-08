@@ -11,7 +11,7 @@ export const methods = {
 };
 
 export const baseUrl = 'http://localhost:3000';
-export const signUpRoute = 'register';
+export const signUpRoute = 'signup';
 export const signInRoute = 'login';
 export const verificationRoute = 'verificationmail';
 export const resetToken = 'passwordreset';

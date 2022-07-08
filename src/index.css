@@ -12,3 +12,7 @@
 .main-page-yellow {
   background-color: #ffc735 !important;
 }
+
+@media screen and (max-width: 480px) {
+.main-logo-section { display: none; }
+}

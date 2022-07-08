@@ -78,12 +78,14 @@ const PasswordForget = () => {
               />
             </div>
             <div className="mt-2 fw-bold h6 text-center" style={{ fontSize: '13px' }}>OR</div>
-            <Link to="/signup" className="fw-bold btn btn-light col-md-12" style={{ textDecoration: 'none', fontSize: '13px' }}>
-              Go to sign up
-            </Link>
-            <Link to="/" className="fw-bold btn btn-secondary col-md-12 mt-2" style={{ textDecoration: 'none', fontSize: '13px' }}>
-              Go to Log in
-            </Link>
+            <div className="row pb-2">
+              <Link to="/signup" className="fw-bold btn btn-light col-md-12 col-sm-12" style={{ textDecoration: 'none', fontSize: '13px' }}>
+                Go to sign up
+              </Link>
+              <Link to="/" className="fw-bold btn btn-secondary col-md-12 col-sm-12 mt-2" style={{ textDecoration: 'none', fontSize: '13px' }}>
+                Go to Log in
+              </Link>
+            </div>
           </AuthCard>
         </div>
         <div className="col-md-6 col-sm-12 p-0 d-flex align-items-center">

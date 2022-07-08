@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import { PostRequest, GetRequest } from '../utils/index';
 import {
   AUTHENTICATED, UNAUTHENTICATED,
@@ -27,11 +26,19 @@ export const signIn = (data, history) => async dispatch => {
 
 export const signUp = data => async dispatch => {
   dispatch({ type: PENDING_REQUEST, payload: 'Loading Content' });
+  const result = {
+    firstname: data?.first_name,
+    lastname: data?.last_name,
+    email: data?.userEmail,
+    password: data?.password,
+  };
   try {
-    const response = await PostRequest(methods.post, signUpRoute, data);
+    const response = await PostRequest(methods.post, signUpRoute, result);
     dispatch({ type: UNAUTHENTICATED, payload: response?.data });
+    return response?.data;
   } catch (error) {
     dispatch({ type: AUTHENTICATION_ERROR, payload: error?.message });
+    return error?.response?.data;
   }
 };
 

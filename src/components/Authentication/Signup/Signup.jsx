@@ -1,9 +1,12 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable consistent-return */
 
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import { toast } from 'react-toastify';
+
 import Display from '../Display/Display';
 import AuthCard from '../../../generics/AuthCard';
 import { Input, PasswordInput } from '../../../generics/Input';
@@ -21,7 +24,10 @@ const Signup = () => {
   const [errors, setErrors] = useState({});
   const [passwordState, setPasswordState] = useState('password');
   const [confirmPasswordState, setConfirmPasswordState] = useState('password');
+  const [loading, setLoading] = useState(false);
+
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const togglePassword = () => {
     if (passwordState === 'password') return setPasswordState('text');
@@ -40,12 +46,22 @@ const Signup = () => {
 
   const submitSignUp = () => setErrors(authValidator(values, 'signup'));
 
-  useEffect(() => {
+  const signUpFunction = async () => {
     const errorArray = Object.keys(errors);
     if (errorArray.length === 1 && errorArray.includes('state')) {
-      dispatch(signUp(values));
+      setLoading(true);
+      const response = dispatch(signUp(values));
+      const result = await response.then(result => result?.firstname);
+      if (result) {
+        toast.success('Account Created, Log In');
+        return history.push('/');
+      }
+      toast.error('User probably exists already!!');
+      setLoading(false);
     }
-  }, [errors]);
+  };
+
+  useEffect(() => { signUpFunction(); }, [errors]);
 
   return (
     <div className="container d-flex align-items-center justify-content-center" style={{ height: '100vh' }}>
@@ -55,6 +71,8 @@ const Signup = () => {
             pageMainHeader={signupConstants.pageMainHeader}
             pageMiniHeader={signupConstants.pageMiniHeader}
             pageExtraHeading={signupConstants.pageExtraHeading}
+            loading={loading}
+            text="Signing up, Please Wait"
           >
             <div className="row mt-3">
               <div className="col-lg-6 col-md-12 col-sm-12">
@@ -119,7 +137,7 @@ const Signup = () => {
                 clickButton={submitSignUp}
               />
             </div>
-            <div className="mt-2">
+            <div className="mt-2 pb-2">
               Already have an account ?
               {' '}
               <Link className="fw-bold" style={{ textDecoration: 'none', fontSize: '13px', color: '#2a57d3' }} to="/">Log In Here</Link>

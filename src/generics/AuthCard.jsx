@@ -3,7 +3,7 @@
 import React from 'react';
 
 const AuthCard = ({
-  children, pageMainHeader, pageMiniHeader, pageExtraHeading, loading,
+  children, pageMainHeader, pageMiniHeader, pageExtraHeading, loading, text,
 }) => (
   <div className="d-flex flex-column align-items-center pl-3">
     <div style={{ width: '80%', marginTop: '50px' }}>
@@ -24,7 +24,7 @@ const AuthCard = ({
           }
       </div>
       <div>{pageMiniHeader}</div>
-      {loading && <span className="text-center mt-1">Login In, Please wait!!!</span>}
+      {loading && <span className="text-center mt-1">{text}</span>}
       {children}
     </div>
   </div>

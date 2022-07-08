@@ -63,6 +63,7 @@ const Login = () => {
             pageMiniHeader={loginConstants.pageMiniHeader}
             pageExtraHeading={loginConstants.pageExtraHeading}
             loading={loading}
+            text="Loging In, Please Wait"
           >
             <div className="mt-3">
               <Input
