@@ -22,11 +22,11 @@ const Login = () => {
   const [values, setValues] = useState(initialState);
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
-  const dispatch = useDispatch();
   const [passwordState, setPasswordState] = useState('password');
-  const history = useHistory();
 
   const authenticationError = useSelector(state => state.authentication.error);
+  const dispatch = useDispatch();
+  const history = useHistory();
 
   const togglePassword = () => {
     if (passwordState === 'password') return setPasswordState('text');
@@ -55,8 +55,8 @@ const Login = () => {
   useEffect(() => { authFunction(); }, [errors]);
 
   return (
-    <div className="container px-0">
-      <div className="row">
+    <div className="container d-flex align-items-center justify-content-center" style={{ height: '100vh' }}>
+      <div className="row w-100" style={{ border: '1px solid #2A57D3' }}>
         <div className="col-md-6 col-sm-12">
           <AuthCard
             pageMainHeader={loginConstants.pageMainHeader}
@@ -103,7 +103,7 @@ const Login = () => {
             </div>
           </AuthCard>
         </div>
-        <div className="col-md-6 col-sm-12 px-0 d-flex align-items-center">
+        <div className="col-md-6 col-sm-12 p-0 d-flex align-items-center">
           <Display />
         </div>
       </div>

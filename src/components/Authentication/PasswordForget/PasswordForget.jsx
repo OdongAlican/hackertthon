@@ -41,8 +41,9 @@ const PasswordForget = () => {
     }
   }, [errors]);
   return (
-    <div data-testid="forgetPassword" className="d-flex">
-      {displayModal
+    <div className="container d-flex align-items-center justify-content-center" style={{ height: '100vh' }}>
+      <div className="row w-100" style={{ border: '1px solid #2A57D3' }}>
+        {displayModal
         && (
           <ScreenModal
             icon={forgotPasswordModal.icon}
@@ -53,40 +54,41 @@ const PasswordForget = () => {
             email={emailContentState.message.to}
           />
         )}
-      <div className="col-md-6 col-sm-12">
-        <AuthCard
-          pageMainHeader={forgetPasswordConstants.pageMainHeader}
-          pageMiniHeader={forgetPasswordConstants.pageMiniHeader}
-          pageExtraHeading={forgetPasswordConstants.pageExtraHeading}
-        >
-          <div className="col-md-12 col-sm-12 mt-3">
-            <Input
-              inputName="userEmail"
-              errors={errors.userEmail}
-              placeholder="Type here ...."
-              label="Email Address"
-              inputType="text"
-              inputSize="large"
-              changeValue={handleChange}
-            />
-          </div>
-          <div className="mt-4">
-            <Button
-              buttonName="Send Reset Link"
-              clickButton={submitNewPassword}
-            />
-          </div>
-          <div className="mt-2 fw-bold h6 text-center" style={{ fontSize: '13px' }}>OR</div>
-          <Link to="/signup" className="fw-bold btn btn-light col-md-12" style={{ textDecoration: 'none', fontSize: '13px' }}>
-            Go to sign up
-          </Link>
-          <Link to="/" className="fw-bold btn btn-secondary col-md-12 mt-2" style={{ textDecoration: 'none', fontSize: '13px' }}>
-            Go to Log in
-          </Link>
-        </AuthCard>
-      </div>
-      <div className="col-md-6 h-100 col-sm-12" style={{ heigth: '100vh' }}>
-        <Display />
+        <div className="col-md-6 col-sm-12">
+          <AuthCard
+            pageMainHeader={forgetPasswordConstants.pageMainHeader}
+            pageMiniHeader={forgetPasswordConstants.pageMiniHeader}
+            pageExtraHeading={forgetPasswordConstants.pageExtraHeading}
+          >
+            <div className="col-md-12 col-sm-12 mt-3">
+              <Input
+                inputName="userEmail"
+                errors={errors.userEmail}
+                placeholder="Type here ...."
+                label="Email Address"
+                inputType="text"
+                inputSize="large"
+                changeValue={handleChange}
+              />
+            </div>
+            <div className="mt-4">
+              <Button
+                buttonName="Send Reset Link"
+                clickButton={submitNewPassword}
+              />
+            </div>
+            <div className="mt-2 fw-bold h6 text-center" style={{ fontSize: '13px' }}>OR</div>
+            <Link to="/signup" className="fw-bold btn btn-light col-md-12" style={{ textDecoration: 'none', fontSize: '13px' }}>
+              Go to sign up
+            </Link>
+            <Link to="/" className="fw-bold btn btn-secondary col-md-12 mt-2" style={{ textDecoration: 'none', fontSize: '13px' }}>
+              Go to Log in
+            </Link>
+          </AuthCard>
+        </div>
+        <div className="col-md-6 col-sm-12 p-0 d-flex align-items-center">
+          <Display />
+        </div>
       </div>
     </div>
   );

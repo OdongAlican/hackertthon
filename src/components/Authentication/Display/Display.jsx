@@ -1,11 +1,11 @@
 import React from 'react';
 
 const Display = () => (
-  <div className="main-page-blue pt-4 w-100">
-    <div className="main-page-yellow w-50 text-center h6 p-2 fw-bold" style={{ borderRadius: '20px', marginLeft: '10%' }}>
-      TRANSPARENT PAYMENT APPLICATION
+  <div className="main-page-blue pt-4 w-100 h-100">
+    <div className=" w-100 text-center d-flex justify-content-center mb-2">
+      <div className="main-page-yellow fw-bold text-center w-50" style={{ borderRadius: '15px', fontSize: '14px' }}>TRANSPARENT PAYMENT APPLICATION</div>
     </div>
-    <div className="text-white text-center">
+    <div className="text-white text-center" style={{ fontSize: '14px' }}>
       Your third party application that guarantees you get
       value for the service you paid for
     </div>
