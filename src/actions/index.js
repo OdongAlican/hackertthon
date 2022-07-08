@@ -14,15 +14,13 @@ export const signIn = (data, history) => async dispatch => {
   try {
     const request = { email: data?.userEmail, password: data?.password };
     const response = await PostRequest(methods.post, signInRoute, request);
-    // console.log(response, 'response');
 
     dispatch({ type: AUTHENTICATED });
     localStorage.setItem('user', JSON.stringify(response?.data));
     history.push('/dashboard');
     return response?.data;
   } catch (error) {
-    // console.log(error?.response, 'error');
-    dispatch({ type: AUTHENTICATION_ERROR, payload: error?.message });
+    dispatch({ type: AUTHENTICATION_ERROR, payload: error?.response?.data?.message });
     return error?.response?.data;
   }
 };

@@ -1,5 +1,7 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/no-array-index-key */
 import React from 'react';
-import { Dropdown, ButtonGroup } from 'react-bootstrap';
+import { Dropdown, ButtonGroup, SplitButton } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import {
   useHistory,
@@ -53,15 +55,22 @@ const Dashboard = () => {
               </svg>
               <div className="current-user-profile" />
               <div className="current-user-name">{`${capitalize(currentUser?.user?.firstname)} ${capitalize(currentUser?.user?.lastname)}`}</div>
-              <Dropdown as={ButtonGroup}>
-                <Dropdown.Toggle split variant="light" id="dropdown-split-basic" />
-                <Dropdown.Menu>
-                  <Dropdown.Item href="#/action-1">Profile</Dropdown.Item>
-                  <Dropdown.Item href="#/action-2">Terms and condition</Dropdown.Item>
+              {[SplitButton].map((DropdownType, idx) => (
+                <DropdownType
+                  as={ButtonGroup}
+                  key={idx}
+                  id={`dropdown-button-drop-${idx}`}
+                  size="sm"
+                  variant="secondary"
+                  title=""
+                >
+                  <Dropdown.Item className="dropdown-item has-icon" eventKey="1">Action</Dropdown.Item>
+                  <Dropdown.Item className="dropdown-item has-icon" eventKey="2">Another action</Dropdown.Item>
+                  <Dropdown.Item className="dropdown-item has-icon" eventKey="3">Settings</Dropdown.Item>
                   <Dropdown.Divider />
-                  <Dropdown.Item onClick={logoutFxn}>Logout</Dropdown.Item>
-                </Dropdown.Menu>
-              </Dropdown>
+                  <Dropdown.Item onClick={() => logoutFxn()} className="dropdown-item has-icon" eventKey="4">Log Out</Dropdown.Item>
+                </DropdownType>
+              ))}
             </div>
           </div>
         </div>

@@ -3,7 +3,7 @@
 /* eslint-disable consistent-return */
 
 import React, { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -21,9 +21,12 @@ const initialState = { userEmail: '', password: '' };
 const Login = () => {
   const [values, setValues] = useState(initialState);
   const [errors, setErrors] = useState({});
+  const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
   const [passwordState, setPasswordState] = useState('password');
   const history = useHistory();
+
+  const authenticationError = useSelector(state => state.authentication.error);
 
   const togglePassword = () => {
     if (passwordState === 'password') return setPasswordState('text');
@@ -40,10 +43,12 @@ const Login = () => {
   const authFunction = async () => {
     const errorArray = Object.keys(errors);
     if (errorArray.length === 1 && errorArray.includes('state')) {
+      setLoading(true);
       const response = dispatch(signIn(values, history));
       const result = await response.then(result => result?.user);
       if (result) return toast.success(`Welcome ${result?.firstname} !!`);
-      return toast.error('Unauthorized User!!!');
+      setLoading(false);
+      return toast.error(authenticationError || 'Invalid Email or Password');
     }
   };
 
@@ -57,6 +62,7 @@ const Login = () => {
             pageMainHeader={loginConstants.pageMainHeader}
             pageMiniHeader={loginConstants.pageMiniHeader}
             pageExtraHeading={loginConstants.pageExtraHeading}
+            loading={loading}
           >
             <div className="mt-3">
               <Input
