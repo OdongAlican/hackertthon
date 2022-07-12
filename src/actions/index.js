@@ -13,9 +13,9 @@ export const signIn = (data, history) => async dispatch => {
   try {
     const request = { email: data?.userEmail, password: data?.password };
     const response = await PostRequest(methods.post, signInRoute, request);
+    await localStorage.setItem('user', JSON.stringify(response?.data));
 
     dispatch({ type: AUTHENTICATED });
-    localStorage.setItem('user', JSON.stringify(response?.data));
     history.push('/dashboard');
     return response?.data;
   } catch (error) {
@@ -75,4 +75,5 @@ export const resetPassword = data => async dispatch => {
 export const signOut = () => async dispatch => {
   dispatch({ type: UNAUTHENTICATED });
   localStorage.removeItem('user');
+  localStorage.removeItem('token');
 };

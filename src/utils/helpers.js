@@ -8,3 +8,12 @@ export const fetchLoggedInUser = () => {
 export const capitalize = str => str.charAt(0).toUpperCase() + str.slice(1);
 
 export const determineTitle = string => string.includes('sales') ? 'Product' : 'Purchase';
+
+export const determineSubTitle = string => {
+  if (string.includes('sales')) return 'Select and view all your past sales';
+  if (string.includes('requests')) return 'Select and view all your past requests';
+  if (string.includes('purchase')) return 'Select and view all your past purchase';
+  return 'Make your choice';
+};
+
+export const formatDate = string => string.substring(0, string.indexOf('T'));

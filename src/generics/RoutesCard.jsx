@@ -3,6 +3,7 @@
 
 import React from 'react';
 import { useHistory } from 'react-router-dom';
+import { determineSubTitle } from '../utils/helpers';
 
 const RoutesCard = ({ children }) => {
   const [currentRoute, setCurrentRoute] = React.useState('');
@@ -13,6 +14,8 @@ const RoutesCard = ({ children }) => {
     if (history.location.pathname.includes('purchase')) setCurrentRoute('purchase');
 
     if (history.location.pathname.includes('requests')) setCurrentRoute('requests');
+
+    if (history.location.pathname.includes('dashboard')) setCurrentRoute('dashboard');
   }, []);
   history.listen(location => setCurrentRoute(location.pathname));
   return (
@@ -22,18 +25,12 @@ const RoutesCard = ({ children }) => {
             currentRoute.includes('purchase') ? 'Your Purchase'
               : currentRoute.includes('sales') ? 'Your Sales'
                 : currentRoute.includes('requests') ? 'Your Requests'
-                  : null
+                  : currentRoute.includes('dashboard') ? 'Available Products'
+                    : null
           }
       </div>
       <div className="mini-routes-card-header">
-        Select and view all your past
-        {' '}
-        {
-            currentRoute.includes('purchase') ? 'Purchase'
-              : currentRoute.includes('sales') ? 'Sales'
-                : currentRoute.includes('requests') ? 'Requests'
-                  : null
-          }
+        { determineSubTitle(history.location.pathname)}
       </div>
       <div className="inner-nested-routes">
         {children}
