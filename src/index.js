@@ -8,7 +8,7 @@ import { ToastContainer } from 'react-toastify';
 import { createStore, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
-import Router from './components/Router/Router';
+import Router from './App/Router/Router';
 import rootReducer from './reducers';
 import { AUTHENTICATED } from './actions/constants';
 

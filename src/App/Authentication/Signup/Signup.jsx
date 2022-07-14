@@ -8,12 +8,12 @@ import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 
 import Display from '../Display/Display';
-import AuthCard from '../../../generics/AuthCard';
-import { Input, PasswordInput } from '../../../generics/Input';
+import AuthCard from '../../../components/AuthCard';
+import { Input, PasswordInput } from '../../../components/Input';
 import { signupConstants } from '../../../constants/index';
 import { authValidator } from '../../../constants/validators';
 import { signUp } from '../../../actions';
-import Button from '../../../generics/Button';
+import Button from '../../../components/Button';
 
 const initialState = {
   first_name: '', last_name: '', userEmail: '', password: '', confirm_password: '',

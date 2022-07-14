@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom';
 import { determineTitle } from '../utils/helpers';
 
 import ModalComponent from './Modal';
-import CreateProduct from '../components/Dashboard/SubRoutes/Sales/CreateProduct';
+import CreateProduct from '../App/Pages/SubRoutes/Sales/CreateProduct';
 
 const InnerRoutesHeader = ({ url }) => {
   const [showModal, setShowModal] = useState(false);

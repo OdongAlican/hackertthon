@@ -6,7 +6,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
-import PasswordForget from '../components/Authentication/PasswordForget/PasswordForget';
+import PasswordForget from '../App/Authentication/PasswordForget/PasswordForget';
 import initialState from './login.test';
 
 afterEach(cleanup);

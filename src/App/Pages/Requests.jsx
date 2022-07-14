@@ -1,7 +1,7 @@
 import React from 'react';
-import { InnerRoutesCardTwo } from '../../generics/Generics';
-import InnerRoutesWrapper from '../../generics/InnerRoutesWrapper';
-import InnerRoutesCardTwoSection from '../../generics/InnerRoutesCardTwoSection';
+import { InnerRoutesCardTwo } from '../../components/Generics';
+import InnerRoutesWrapper from '../../components/InnerRoutesWrapper';
+import InnerRoutesCardTwoSection from '../../components/InnerRoutesCardTwoSection';
 import { requestArray } from '../../constants/index';
 
 const Requests = () => (

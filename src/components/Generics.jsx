@@ -5,12 +5,12 @@ import React from 'react';
 import './index.css';
 
 import { Route } from 'react-router-dom';
-import PendingPurchases from '../components/Dashboard/SubRoutes/Purchase/PendingPurchases';
-import RecievedPurchase from '../components/Dashboard/SubRoutes/Purchase/RecievedPurchase';
-import FailedPurchase from '../components/Dashboard/SubRoutes/Purchase/FailedPurchase';
-import RecievedSale from '../components/Dashboard/SubRoutes/Sales/RecievedSale';
-import PendingSales from '../components/Dashboard/SubRoutes/Sales/PendingSales';
-import FailedSales from '../components/Dashboard/SubRoutes/Sales/FailedSales';
+import PendingPurchases from '../App/Pages/SubRoutes/Purchase/PendingPurchases';
+import RecievedPurchase from '../App/Pages/SubRoutes/Purchase/RecievedPurchase';
+import FailedPurchase from '../App/Pages/SubRoutes/Purchase/FailedPurchase';
+import RecievedSale from '../App/Pages/SubRoutes/Sales/RecievedSale';
+import PendingSales from '../App/Pages/SubRoutes/Sales/PendingSales';
+import FailedSales from '../App/Pages/SubRoutes/Sales/FailedSales';
 import ProductCard from './ProductCard';
 
 export const ErrorSection = ({ message }) => <div className="text-danger fw-bold" style={{ fontSize: '12px' }}>{message}</div>;

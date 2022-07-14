@@ -1,9 +1,9 @@
 import React from 'react';
 import { useRouteMatch, BrowserRouter as Router } from 'react-router-dom';
 
-import { InnerRoutesCardOne } from '../../generics/Generics';
-import InnerRoutesWrapper from '../../generics/InnerRoutesWrapper';
-import InnerRoutesHeader from '../../generics/InnerRoutesHeader';
+import { InnerRoutesCardOne } from '../../components/Generics';
+import InnerRoutesWrapper from '../../components/InnerRoutesWrapper';
+import InnerRoutesHeader from '../../components/InnerRoutesHeader';
 
 const Purchase = () => {
   const { url, path } = useRouteMatch();

@@ -6,7 +6,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
-import Dashboard from '../components/Dashboard/Dashboard';
+import Dashboard from '../App/Pages/Dashboard';
 import initialState from './login.test';
 
 afterEach(cleanup);

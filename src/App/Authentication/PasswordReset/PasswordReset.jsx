@@ -6,12 +6,12 @@ import { Link, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { resetPasswordConstants, passwordResetModal } from '../../../constants/index';
 import Display from '../Display/Display';
-import ScreenModal from '../../../generics/ScreenModal';
-import AuthCard from '../../../generics/AuthCard';
-import { PasswordInput } from '../../../generics/Input';
+import ScreenModal from '../../../components/ScreenModal';
+import AuthCard from '../../../components/AuthCard';
+import { PasswordInput } from '../../../components/Input';
 import { fetchResetToken, resetPassword } from '../../../actions';
 import { authValidator } from '../../../constants/validators';
-import Button from '../../../generics/Button';
+import Button from '../../../components/Button';
 
 const initialState = {
   password: '',

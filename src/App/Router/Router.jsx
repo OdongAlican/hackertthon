@@ -4,7 +4,7 @@ import Login from '../Authentication/Login/Login';
 import Signup from '../Authentication/Signup/Signup';
 import PasswordForget from '../Authentication/PasswordForget/PasswordForget';
 import PasswordReset from '../Authentication/PasswordReset/PasswordReset';
-import Dashboard from '../Dashboard/Dashboard';
+import Dashboard from '../Pages/Dashboard';
 import PrivateRoute from '../PrivateRoute/PrivateRoute';
 
 const Router = () => (

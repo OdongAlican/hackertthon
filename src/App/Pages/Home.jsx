@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import InnerRoutesWrapper from '../../generics/InnerRoutesWrapper';
-import { InnerRoutesCardTwo } from '../../generics/Generics';
+import InnerRoutesWrapper from '../../components/InnerRoutesWrapper';
+import { InnerRoutesCardTwo } from '../../components/Generics';
 import { fetchProductsList } from '../../actions/products';
-import InnerRoutesCardTwoSection from '../../generics/InnerRoutesCardTwoSection';
-import Loader from '../../generics/Loader';
-import PaginationComponent from '../../generics/Pagination';
+import InnerRoutesCardTwoSection from '../../components/InnerRoutesCardTwoSection';
+import Loader from '../../components/Loader';
+import PaginationComponent from '../../components/Pagination';
 
 const Home = () => {
   const [loading, setLoading] = useState(false);

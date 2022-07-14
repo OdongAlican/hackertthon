@@ -4,8 +4,8 @@ import React, { useEffect, useState } from 'react';
 import { Editor } from 'react-draft-wysiwyg';
 import { EditorState } from 'draft-js';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
-import { Input } from '../../../../generics/Input';
-import SelectOption from '../../../../generics/SelectOption';
+import { Input } from '../../../../components/Input';
+import SelectOption from '../../../../components/SelectOption';
 
 const initialState = {
   category: '', name: '', price: '', description: '',

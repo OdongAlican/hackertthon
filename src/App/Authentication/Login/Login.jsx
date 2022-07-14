@@ -9,12 +9,12 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import Display from '../Display/Display';
-import AuthCard from '../../../generics/AuthCard';
-import { Input, PasswordInput } from '../../../generics/Input';
+import AuthCard from '../../../components/AuthCard';
+import { Input, PasswordInput } from '../../../components/Input';
 import { authValidator } from '../../../constants/validators';
 import { signIn } from '../../../actions';
 import { loginConstants } from '../../../constants/index';
-import Button from '../../../generics/Button';
+import Button from '../../../components/Button';
 
 const initialState = { userEmail: '', password: '' };
 

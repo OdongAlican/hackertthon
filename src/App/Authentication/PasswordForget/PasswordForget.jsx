@@ -4,11 +4,11 @@ import { Link, useHistory } from 'react-router-dom';
 import { forgotPassword } from '../../../actions';
 import { forgetPasswordConstants, forgotPasswordModal } from '../../../constants/index';
 import { authValidator } from '../../../constants/validators';
-import ScreenModal from '../../../generics/ScreenModal';
-import AuthCard from '../../../generics/AuthCard';
-import { Input } from '../../../generics/Input';
+import ScreenModal from '../../../components/ScreenModal';
+import AuthCard from '../../../components/AuthCard';
+import { Input } from '../../../components/Input';
 import Display from '../Display/Display';
-import Button from '../../../generics/Button';
+import Button from '../../../components/Button';
 
 const initialState = { userEmail: '' };
 

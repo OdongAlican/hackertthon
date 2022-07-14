@@ -5,7 +5,7 @@ import renderer from 'react-test-renderer';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
-import Login from '../components/Authentication/Login/Login';
+import Login from '../App/Authentication/Login/Login';
 
 afterEach(cleanup);
 
