@@ -99,7 +99,7 @@
 
 .inner-routes-card-two {
   margin: 30px 0;
-  max-height: 65vh;
+  max-height: 53vh;
   overflow-y: auto;
 }
 
@@ -108,9 +108,9 @@
   background-color: #fff;
   border: 5px;
   padding: 20px;
-  border-radius: 5px;
+  /* border-radius: 5px; */
   box-shadow: 4px 4px 24px 4px rgba(134, 136, 153, 0.12);
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 
 .inner-routes-card-two-left,
