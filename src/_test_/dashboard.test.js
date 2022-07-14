@@ -11,30 +11,29 @@ import initialState from './login.test';
 
 afterEach(cleanup);
 
-
 const middlewares = [thunk];
 const mockStore = configureStore(middlewares);
 let store;
 
 it('renders Dashboard correctly', () => {
-    store = mockStore({...initialState, authenticated: true});
-    const { getAllByTestId } = render(
-      <Router>
-        <Provider store={store}><Dashboard /></Provider>
-        ,
-      </Router>,
-    );
-    const result = getAllByTestId('appDashboard');
-    expect(result[0]).toHaveTextContent('HOMEPURCHASESALESREQUESTSAlican SundaySelect and view all your past Home');
-  });
+  store = mockStore({ ...initialState, authenticated: true });
+  const { getAllByTestId } = render(
+    <Router>
+      <Provider store={store}><Dashboard /></Provider>
+      ,
+    </Router>,
+  );
+  const result = getAllByTestId('appDashboard');
+  expect(result[0]).toHaveTextContent('HOMEPURCHASESALESREQUESTSAlican SundaySelect and view all your past Home');
+});
 
-  it('renders Dashboard correctly', () => {
-    store = mockStore(initialState);
-    const { getAllByTestId } = render(
-      <Router>
-        <Provider store={store}><Dashboard /></Provider>
-      </Router>,
-    );
-    const result = getAllByTestId('appDashboard');
-    expect(result[0]).not.toHaveTextContent('Some Random Text');
-  });
+it('renders Dashboard correctly', () => {
+  store = mockStore(initialState);
+  const { getAllByTestId } = render(
+    <Router>
+      <Provider store={store}><Dashboard /></Provider>
+    </Router>,
+  );
+  const result = getAllByTestId('appDashboard');
+  expect(result[0]).not.toHaveTextContent('Some Random Text');
+});

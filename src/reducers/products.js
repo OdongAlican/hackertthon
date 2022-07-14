@@ -1,7 +1,7 @@
 import { FETCH_PRODUCTS } from '../actions/constants';
 
 const initialState = {
-  productsList: [],
+  productsList: { products: [], total: 0 },
 };
 
 const products = (state = initialState, action) => {
@@ -9,7 +9,10 @@ const products = (state = initialState, action) => {
     case FETCH_PRODUCTS:
       return {
         ...state,
-        productsList: action.payload,
+        productsList: {
+          products: action?.payload?.products,
+          total: action?.payload?.total,
+        },
       };
     default:
       return state;

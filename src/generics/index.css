@@ -100,6 +100,7 @@
 .inner-routes-card-two {
   margin: 30px 0;
   max-height: 65vh;
+  overflow-y: auto;
 }
 
 .inner-routes-card-two-innner-section {
