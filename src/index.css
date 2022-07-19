@@ -33,3 +33,7 @@
 }
 
 /* Scroll bar */
+
+.settings-image-background {
+  background: rgba(0, 0, 0, 0.3);
+}

@@ -4,7 +4,7 @@ import React from 'react';
 import Button from './Button';
 import { formatDate, capitalize } from '../utils/helpers';
 
-const InnerRoutesCardTwoSection = ({ element }) => (
+const InnerRoutesCardTwoSection = ({ element, clickEvent }) => (
   <div className="inner-routes-card-two-innner-section">
     <div className="inner-routes-card-two-left">
       <div className="product-title-and-price">
@@ -32,7 +32,7 @@ const InnerRoutesCardTwoSection = ({ element }) => (
     </div>
     <div className="inner-routes-card-two-right">
       <div className="inner-routes-card-two-right-first">
-        <Button RequestButton buttonName="VIEW AGREEMENT" />
+        <Button RequestButton buttonName="VIEW AGREEMENT" clickButton={clickEvent} />
       </div>
       <div className="inner-routes-card-two-right-second">
         <Button RequestButtonAccepted buttonName="ACCEPTED" />

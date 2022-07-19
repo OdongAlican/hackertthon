@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { determineTitle } from '../utils/helpers';
 
-import ModalComponent from './Modal';
+import { ModalComponent } from './Modal';
 import CreateProduct from '../App/Pages/SubRoutes/Sales/CreateProduct';
 
 const InnerRoutesHeader = ({ url }) => {

@@ -7,9 +7,12 @@ import { fetchProductsList } from '../../actions/products';
 import InnerRoutesCardTwoSection from '../../components/InnerRoutesCardTwoSection';
 import Loader from '../../components/Loader';
 import PaginationComponent from '../../components/Pagination';
+import { ModalComponent } from '../../components/Modal';
 
 const Home = () => {
   const [loading, setLoading] = useState(false);
+  const [show, setShow] = useState(false);
+  const [display, setDisplay] = useState('');
   const [pageNumber, setPageNumber] = useState(1);
   const [updatedProductList, setUpdatedProductList] = useState([]);
 
@@ -23,6 +26,8 @@ const Home = () => {
   };
 
   const goToPage = page => { setUpdatedProductList([]); setPageNumber(page); };
+  const displayModal = () => { setShow(true); setDisplay('create'); };
+  const showFxn = () => { setShow(false); setDisplay(''); };
 
   useEffect(() => { fetchProducts(); }, []);
   useEffect(() => { fetchProducts(); }, [pageNumber]);
@@ -30,11 +35,22 @@ const Home = () => {
 
   return (
     <>
+      {
+      display === 'create' ? (
+        <ModalComponent title="Product Details" show={show} showFxn={showFxn} />
+      ) : null
+    }
       <InnerRoutesWrapper>
         <InnerRoutesCardTwo>
           { loading && <div className="w-100 d-flex justify-content-center"><Loader /></div> }
           { !loading && updatedProductList.map(
-            element => <InnerRoutesCardTwoSection key={element.id} element={element} />,
+            element => (
+              <InnerRoutesCardTwoSection
+                clickEvent={displayModal}
+                key={element.id}
+                element={element}
+              />
+            ),
           )}
         </InnerRoutesCardTwo>
       </InnerRoutesWrapper>
