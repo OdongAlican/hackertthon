@@ -1,13 +1,12 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 
 import React, { useState } from 'react';
-// import { Editor } from 'react-draft-wysiwyg';
-// import { EditorState } from 'draft-js';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import { Input } from '../../../../components/Input';
 import SelectOption from '../../../../components/SelectOption';
 import { convertImageToBase64 } from '../../../../utils/helpers';
 import placeholder from '../../../../utils/images/placeholder.png';
+import Button from '../../../../components/Button';
 
 const initialState = {
   category: '', name: '', price: '', description: '',
@@ -16,7 +15,6 @@ const initialState = {
 const categoryList = [{ name: 'Cloth' }, { name: 'Shoe' }, { name: 'Electronic' }, { name: 'Other' }];
 
 const CreateProduct = () => {
-  // const [editorState, setEditorState] = useState(() => EditorState.createEmpty());
   const [values, setValues] = useState(initialState);
   const [image, setImage] = useState('');
 
@@ -24,8 +22,6 @@ const CreateProduct = () => {
     const { value, name } = e.target;
     setValues({ ...values, [name]: value });
   };
-
-  // useEffect(() => console.log(editorState), [editorState]);
 
   const selectedFile = async event => {
     if (event.target.files && event.target.files[0]) {
@@ -38,8 +34,8 @@ const CreateProduct = () => {
 
   return (
     <>
-      <div className="w-100 d-flex justify-content-center align-items-center bg-info">
-        <div className="bg-warning" style={{ position: 'relative' }}>
+      <div className="w-100 d-flex justify-content-center align-items-center">
+        <div className="create-product-container">
           <div
             className="settings-image-background text-white d-flex align-items-center justify-content-center"
             style={{
@@ -96,9 +92,16 @@ const CreateProduct = () => {
         <div>
           <label className="fw-bold mb-2">Description</label>
           <textarea className="form-control" rows="4" />
-          {/* <div style={{ border: '1px solid #CED4DA', padding: '2px', minHeight: '200px' }}> */}
-          {/* <Editor editorState={editorState} onEditorStateChange={setEditorState} /> */}
-          {/* </div> */}
+        </div>
+      </div>
+      <div className="d-flex mt-3 justify-content-center">
+        <div className="w-50 d-flex justify-content-between">
+          <div className="w-50 mr-2">
+            <Button buttonName="Submit" buttonSize="medium" />
+          </div>
+          <div className="w-50">
+            <Button buttonName="Cancel" buttonSize="medium" cancel />
+          </div>
         </div>
       </div>
     </>

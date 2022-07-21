@@ -5,7 +5,7 @@ import React from 'react';
 
 const Button = ({
   buttonName, buttonSize, clickButton, RequestButton,
-  RequestButtonAccepted,
+  RequestButtonAccepted, cancel,
 }) => (
   <button
     type="button"
@@ -13,13 +13,16 @@ const Button = ({
     className={
         RequestButton ? (
           'btn btn-primary main-page-blue'
-        ) : RequestButtonAccepted ? (
-          'btn btn-success'
-        ) : (
-          buttonSize === 'small' ? 'btn btn-primary main-page-blue w-50'
-            : buttonSize === 'medium' ? 'btn btn-primary main-page-blue w-75'
-              : 'btn btn-primary main-page-blue w-100'
         )
+          : cancel ? (
+            'btn btn-secondary w-100'
+          ) : RequestButtonAccepted ? (
+            'btn btn-success'
+          ) : (
+            buttonSize === 'small' ? 'btn btn-primary main-page-blue w-50'
+              : buttonSize === 'medium' ? 'btn btn-primary main-page-blue w-75'
+                : 'btn btn-primary main-page-blue w-100'
+          )
       }
   >
     {buttonName}
