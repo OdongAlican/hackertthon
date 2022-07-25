@@ -1,4 +1,5 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
+/* eslint-disable react/prop-types */
 
 import React, { useState } from 'react';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
@@ -9,12 +10,12 @@ import placeholder from '../../../../utils/images/placeholder.png';
 import Button from '../../../../components/Button';
 
 const initialState = {
-  category: '', name: '', price: '', description: '',
+  category: '', name: '', price: '', description: '', image: '', other: '',
 };
 
 const categoryList = [{ name: 'Cloth' }, { name: 'Shoe' }, { name: 'Electronic' }, { name: 'Other' }];
 
-const CreateProduct = () => {
+const CreateProduct = ({ showFxn }) => {
   const [values, setValues] = useState(initialState);
   const [image, setImage] = useState('');
 
@@ -29,8 +30,10 @@ const CreateProduct = () => {
     }
     const file = event.currentTarget.files[0];
     const base64File = await convertImageToBase64(file);
-    console.log('image_b64', base64File);
+    setValues({ ...values, image: base64File });
   };
+
+  const submit = () => console.log(values, 'values');
 
   return (
     <>
@@ -52,7 +55,7 @@ const CreateProduct = () => {
       <div className="row">
         <div className="col-md-6">
           <Input
-            inputName="productName"
+            inputName="name"
             placeholder="Type here ...."
             label="Product Name"
             inputType="text"
@@ -91,16 +94,16 @@ const CreateProduct = () => {
       <div className="mt-3">
         <div>
           <label className="fw-bold mb-2">Description</label>
-          <textarea className="form-control" rows="4" />
+          <textarea className="form-control" rows="4" name="description" onChange={handleChange} />
         </div>
       </div>
       <div className="d-flex mt-3 justify-content-center">
         <div className="w-50 d-flex justify-content-between">
           <div className="w-50 mr-2">
-            <Button buttonName="Submit" buttonSize="medium" />
+            <Button clickButton={submit} buttonName="Submit" buttonSize="medium" />
           </div>
           <div className="w-50">
-            <Button buttonName="Cancel" buttonSize="medium" cancel />
+            <Button clickButton={showFxn} buttonName="Cancel" buttonSize="medium" cancel />
           </div>
         </div>
       </div>

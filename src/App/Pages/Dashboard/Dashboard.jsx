@@ -45,7 +45,7 @@ const Dashboard = () => {
       {
       display === 'create' ? (
         <ModalComponent title="Create Product" show={show} showFxn={showFxn}>
-          <CreateProduct />
+          <CreateProduct showFxn={showFxn} />
         </ModalComponent>
       ) : null
     }
