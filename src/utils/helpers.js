@@ -24,3 +24,10 @@ export const convertImageToBase64 = file => new Promise((resolve, reject) => {
   fileReader.onload = () => { resolve(fileReader.result); };
   fileReader.onerror = (error => { reject(error); });
 });
+
+export const createSubString = (str, length) => str.length < length ? str
+  : `${str.substring(0, (length + 1))}...`;
+
+export const testStr = `
+This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
+`;

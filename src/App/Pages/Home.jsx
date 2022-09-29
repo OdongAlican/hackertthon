@@ -35,7 +35,6 @@ const Home = () => {
   useEffect(() => { fetchProducts(); }, [pageNumber]);
   useEffect(() => { setUpdatedProductList(productsList?.products); }, [productsList?.products]);
 
-  console.log(updatedProductList);
   return (
     <>
       {
