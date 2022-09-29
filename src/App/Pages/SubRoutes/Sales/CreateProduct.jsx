@@ -3,11 +3,13 @@
 
 import React, { useState } from 'react';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
+import { useDispatch } from 'react-redux';
 import { Input } from '../../../../components/Input';
 import SelectOption from '../../../../components/SelectOption';
 import { convertImageToBase64 } from '../../../../utils/helpers';
 import placeholder from '../../../../utils/images/placeholder.png';
 import Button from '../../../../components/Button';
+import { createNewProduct } from '../../../../actions/products';
 
 const initialState = {
   category: '', name: '', price: '', description: '', image: '', other: '',
@@ -18,6 +20,7 @@ const categoryList = [{ name: 'Cloth' }, { name: 'Shoe' }, { name: 'Electronic' 
 const CreateProduct = ({ showFxn }) => {
   const [values, setValues] = useState(initialState);
   const [image, setImage] = useState('');
+  const dispatch = useDispatch();
 
   const handleChange = e => {
     const { value, name } = e.target;
@@ -33,7 +36,7 @@ const CreateProduct = ({ showFxn }) => {
     setValues({ ...values, image: base64File });
   };
 
-  const submit = () => console.log(values, 'values');
+  const submit = () => { dispatch(createNewProduct(values)); showFxn(); };
 
   return (
     <>

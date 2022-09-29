@@ -264,9 +264,9 @@
 }
 
 .product-title-and-price-image {
-  width: 32px;
-  height: 32px;
-  background-color: #03072C;
+  width: 100px;
+  height: 100px;
+  /* background-color: #03072C; */
   border-radius: 50%;
   margin-right: 10px;
 }

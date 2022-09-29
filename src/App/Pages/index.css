@@ -41,15 +41,15 @@
 }
 
 .current-user-profile {
-  width: 30px;
-  height: 30px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
-  background-color: #03072c;
+  cursor: pointer;
   margin: 0 5px;
 }
 
 .current-user-name {
-  width: 150px;
+  margin-left: 20px;
   font-weight: 600;
   color: #03072c;
   display: flex;

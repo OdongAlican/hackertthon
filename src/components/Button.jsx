@@ -9,21 +9,17 @@ const Button = ({
 }) => (
   <button
     type="button"
+    style={{ minWidth: '100px' }}
     onClick={clickButton}
     className={
-        RequestButton ? (
-          'btn btn-primary main-page-blue'
-        )
-          : cancel ? (
-            'btn btn-secondary w-100'
-          ) : RequestButtonAccepted ? (
-            'btn btn-success'
-          ) : (
-            buttonSize === 'small' ? 'btn btn-primary main-page-blue w-50'
-              : buttonSize === 'medium' ? 'btn btn-primary main-page-blue w-75'
-                : 'btn btn-primary main-page-blue w-100'
-          )
-      }
+      RequestButton ? ('btn btn-primary')
+        : cancel ? ('btn btn-secondary')
+          : RequestButtonAccepted ? ('btn btn-success')
+            : (buttonSize === 'small' ? 'btn btn-primary w-50'
+              : buttonSize === 'medium' ? 'btn btn-primary w-75'
+                : 'btn btn-primary w-100'
+            )
+    }
   >
     {buttonName}
   </button>

@@ -45,8 +45,8 @@ const Login = () => {
     if (errorArray.length === 1 && errorArray.includes('state')) {
       setLoading(true);
       const response = dispatch(signIn(values, history));
-      const result = await response.then(result => result?.user);
-      if (result) return toast.success(`Welcome ${result?.firstname} !!`);
+      const result = await response.then(result => result);
+      if (result?.firstname) return toast.success(`Welcome ${result?.firstname} !!`);
       setLoading(false);
       return toast.error(authenticationError || 'Invalid Email or Password');
     }

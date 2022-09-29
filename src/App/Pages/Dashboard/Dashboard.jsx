@@ -2,9 +2,9 @@
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 
-import React, { useState } from 'react';
-import { Dropdown, ButtonGroup, SplitButton } from 'react-bootstrap';
+import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import {
   useHistory,
@@ -22,33 +22,40 @@ import { signOut } from '../../../actions/index';
 import { capitalize, fetchLoggedInUser } from '../../../utils/helpers';
 import { ModalComponent } from '../../../components/Modal';
 import CreateProduct from '../SubRoutes/Sales/CreateProduct';
+import Profile from '../../../utils/images/profile.jpg';
 
 const Dashboard = () => {
   const [show, setShow] = useState(false);
+  const [modal, setModal] = useState(false);
+  const [currentUserName, setCurrentUserName] = useState('');
   const [display, setDisplay] = useState('');
+
   const { url, path } = useRouteMatch();
   const dispatch = useDispatch();
   const history = useHistory();
 
   const displayModal = () => { setShow(true); setDisplay('create'); };
   const showFxn = () => { setShow(false); setDisplay(''); };
+  const currentUserFxn = () => {
+    const user = fetchLoggedInUser();
+    setCurrentUserName(user?.username);
+  };
 
   const logoutFxn = async () => {
     dispatch(signOut());
     history.push('/');
   };
-
-  const currentUser = fetchLoggedInUser();
+  useEffect(() => { currentUserFxn(); }, []);
 
   return (
     <div data-testid="appDashboard">
       {
-      display === 'create' ? (
-        <ModalComponent title="Create Product" show={show} showFxn={showFxn}>
-          <CreateProduct showFxn={showFxn} />
-        </ModalComponent>
-      ) : null
-    }
+        display === 'create' ? (
+          <ModalComponent title="Create Product" show={show} showFxn={showFxn}>
+            <CreateProduct showFxn={showFxn} />
+          </ModalComponent>
+        ) : null
+      }
       <Router>
         <div className="page-nav-section">
           <div className="left-current-user-image-icon">
@@ -63,7 +70,7 @@ const Dashboard = () => {
               <NavLink to={`${url}/sales`}>SALES</NavLink>
               <NavLink to={`${url}/requests`}>REQUESTS</NavLink>
             </div>
-            <div className="inner-righ-current-user-image-icon">
+            <div className="inner-righ-current-user-image-icon d-flex flex-end justify-content-end position-relative">
               <div onClick={() => displayModal()} data-toggle="tooltip" data-placement="bottom" title="Create Product">
                 <svg className="svg-before-name" width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M7.66671 3.66665H6.33337V6.33331H3.66671V7.66665H6.33337V10.3333H7.66671V7.66665H10.3334V6.33331H7.66671V3.66665ZM7.00004 0.333313C3.32004 0.333313 0.333374 3.31998 0.333374 6.99998C0.333374 10.68 3.32004 13.6666 7.00004 13.6666C10.68 13.6666 13.6667 10.68 13.6667 6.99998C13.6667 3.31998 10.68 0.333313 7.00004 0.333313ZM7.00004 12.3333C4.06004 12.3333 1.66671 9.93998 1.66671 6.99998C1.66671 4.05998 4.06004 1.66665 7.00004 1.66665C9.94004 1.66665 12.3334 4.05998 12.3334 6.99998C12.3334 9.93998 9.94004 12.3333 7.00004 12.3333Z" fill="#323232" />
@@ -74,24 +81,20 @@ const Dashboard = () => {
                   <path d="M7.00006 13.6667C7.73339 13.6667 8.33339 13.0667 8.33339 12.3334H5.66673C5.66673 13.0667 6.26673 13.6667 7.00006 13.6667ZM11.0001 9.66669V6.33335C11.0001 4.28669 9.91339 2.57335 8.00006 2.12002V1.66669C8.00006 1.11335 7.55339 0.666687 7.00006 0.666687C6.44673 0.666687 6.00006 1.11335 6.00006 1.66669V2.12002C4.09339 2.57335 3.00006 4.28002 3.00006 6.33335V9.66669L1.66673 11V11.6667H12.3334V11L11.0001 9.66669ZM9.66673 10.3334H4.33339V6.33335C4.33339 4.68002 5.34006 3.33335 7.00006 3.33335C8.66006 3.33335 9.66673 4.68002 9.66673 6.33335V10.3334ZM4.05339 1.72002L3.10006 0.766687C1.50006 1.98669 0.446727 3.86669 0.353394 6.00002H1.68673C1.78673 4.23335 2.69339 2.68669 4.05339 1.72002ZM12.3134 6.00002H13.6467C13.5467 3.86669 12.4934 1.98669 10.9001 0.766687L9.95339 1.72002C11.3001 2.68669 12.2134 4.23335 12.3134 6.00002Z" fill="#323232" />
                 </svg>
               </div>
-              <div className="current-user-profile" />
-              <div className="current-user-name">{`${capitalize(currentUser?.user?.firstname)} ${capitalize(currentUser?.user?.lastname)}`}</div>
-              {[SplitButton].map((DropdownType, idx) => (
-                <DropdownType
-                  as={ButtonGroup}
-                  key={idx}
-                  id={`dropdown-button-drop-${idx}`}
-                  size="sm"
-                  variant="secondary"
-                  title=""
-                >
-                  <Dropdown.Item className="dropdown-item has-icon" eventKey="1">Action</Dropdown.Item>
-                  <Dropdown.Item className="dropdown-item has-icon" eventKey="2">Another action</Dropdown.Item>
-                  <Dropdown.Item className="dropdown-item has-icon" eventKey="3">Settings</Dropdown.Item>
-                  <Dropdown.Divider />
-                  <Dropdown.Item onClick={() => logoutFxn()} className="dropdown-item has-icon" eventKey="4">Log Out</Dropdown.Item>
-                </DropdownType>
-              ))}
+              <div className="current-user-name">{`${capitalize(currentUserName)}`}</div>
+              <div className="current-user-profile" onClick={() => setModal(!modal)}>
+                <img className="w-100 h-100 rounded-circle" src={Profile} alt="10x10" />
+              </div>
+              {modal && (
+                <div className="position-absolute right-0 bg-info w-50 bg-info" style={{ top: '60px' }}>
+                  <ul className="list-group list-group-flush">
+                    <li className="list-group-item" style={{ cursor: 'pointer' }}>Profile</li>
+                    <li className="list-group-item" style={{ cursor: 'pointer' }}>Settings</li>
+                    <li className="list-group-item" style={{ cursor: 'pointer' }}>About</li>
+                    <li className="list-group-item" style={{ cursor: 'pointer' }} onClick={() => logoutFxn()}>Logout</li>
+                  </ul>
+                </div>
+              )}
             </div>
           </div>
         </div>
