@@ -17,7 +17,7 @@ export const fetchProductsList = page => async dispatch => {
 
 export const createNewProduct = data => async dispatch => {
   const requestBody = {
-    ...data, type: data?.category, productname: data?.name, productprice: data?.price,
+    ...data, productname: data?.name, productprice: data?.price,
   };
   try {
     const response = await PostRequest(methods.post, getProductsList, requestBody);

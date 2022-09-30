@@ -1,7 +1,10 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable react/prop-types */
+/* eslint-disable react/no-array-index-key */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import { useDispatch } from 'react-redux';
 import { Input } from '../../../../components/Input';
@@ -10,18 +13,17 @@ import { convertImageToBase64 } from '../../../../utils/helpers';
 import placeholder from '../../../../utils/images/placeholder.png';
 import Button from '../../../../components/Button';
 import { createNewProduct } from '../../../../actions/products';
-
-const initialState = {
-  category: '', name: '', price: '', description: '', image: '', other: '',
-};
+import { initialProductState } from '../../../../utils/constants';
 
 const categoryList = [{ name: 'Cloth' }, { name: 'Shoe' }, { name: 'Electronic' }, { name: 'Other' }];
 
 const CreateProduct = ({ showFxn }) => {
-  const [values, setValues] = useState(initialState);
+  const [values, setValues] = useState(initialProductState);
   const [image, setImage] = useState('');
-  const dispatch = useDispatch();
+  const [imagesArray, setImageArray] = useState([]);
+  const [base64Image, setBase64Image] = useState('');
 
+  const dispatch = useDispatch();
   const handleChange = e => {
     const { value, name } = e.target;
     setValues({ ...values, [name]: value });
@@ -33,14 +35,28 @@ const CreateProduct = ({ showFxn }) => {
     }
     const file = event.currentTarget.files[0];
     const base64File = await convertImageToBase64(file);
-    setValues({ ...values, image: base64File });
+    setBase64Image(base64File);
   };
 
-  const submit = () => { dispatch(createNewProduct(values)); showFxn(); };
+  const submit = () => {
+    dispatch(createNewProduct({ ...values, image: JSON.stringify(values?.image) })); showFxn();
+  };
+
+  useEffect(() => {
+    if (base64Image) { setImageArray([...imagesArray, base64Image]); }
+  }, [base64Image]);
+
+  useEffect(() => { setValues({ ...values, image: imagesArray }); }, [imagesArray]);
+
+  const removeSelectedImage = index => {
+    const res = imagesArray.filter(img => imagesArray.indexOf(img) !== index);
+    setImageArray(res);
+  };
+  console.log(imagesArray, 'images');
 
   return (
     <>
-      <div className="w-100 d-flex justify-content-center align-items-center">
+      <div className="w-100 d-flex align-items-center mb-4">
         <div className="create-product-container">
           <div
             className="settings-image-background text-white d-flex align-items-center justify-content-center"
@@ -53,6 +69,22 @@ const CreateProduct = ({ showFxn }) => {
             </i>
           </div>
           <img className="rounded-circle z-depth-2" alt="100x100" src={image || placeholder} data-holder-rendered="true" style={{ width: '150px', height: '150px', cursor: 'pointer' }} />
+        </div>
+        <div className="p-2 create-product-photos">
+          {imagesArray.map((eachImage, index) => (
+            <div key={index}>
+              <img
+                className="rounded-circle z-depth-2 m-2"
+                alt="100x100"
+                src={eachImage || placeholder}
+                data-holder-rendered="true"
+                style={{
+                  width: '80px', height: '80px', cursor: 'pointer', border: '1px solid #F6F7FE',
+                }}
+              />
+              <i onClick={() => removeSelectedImage(index)} className="fa fa-times-circle" style={{ marginLeft: '-18px', cursor: 'pointer' }} />
+            </div>
+          ))}
         </div>
       </div>
       <div className="row">
@@ -97,15 +129,15 @@ const CreateProduct = ({ showFxn }) => {
       <div className="mt-3">
         <div>
           <label className="fw-bold mb-2">Description</label>
-          <textarea className="form-control" rows="4" name="description" onChange={handleChange} />
+          <textarea className="form-control" rows="3" name="description" onChange={handleChange} />
         </div>
       </div>
       <div className="d-flex mt-3 justify-content-center">
-        <div className="w-50 d-flex justify-content-between">
-          <div className="w-50 mr-2">
+        <div className="w-50 d-flex justify-content-center">
+          <div className="px-1">
             <Button clickButton={submit} buttonName="Submit" buttonSize="medium" />
           </div>
-          <div className="w-50">
+          <div className="px-1">
             <Button clickButton={showFxn} buttonName="Cancel" buttonSize="medium" cancel />
           </div>
         </div>

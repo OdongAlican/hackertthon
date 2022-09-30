@@ -9,7 +9,7 @@ const InnerRoutesCardTwoSection = ({ element, clickEvent }) => {
   return (
     <div className="inner-routes-card-two-innner-section">
       <div className="product-title-and-price-image">
-        <img src={element?.image} alt="10x10" className="w-100 h-100 rounded-circle" />
+        <img src={element?.image && (JSON.parse(element?.image))[0]} alt="10x10" className="w-100 h-100 rounded-circle" />
       </div>
       <div className="inner-routes-card-two-left">
         <div className="product-title-and-price">

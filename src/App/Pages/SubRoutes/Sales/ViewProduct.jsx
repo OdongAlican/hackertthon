@@ -4,7 +4,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Button from '../../../../components/Button';
-import { capitalize, createSubString, testStr } from '../../../../utils/helpers';
+import { testStr } from '../../../../utils/constants';
+import { capitalize, createSubString } from '../../../../utils/helpers';
 
 const ViewProduct = ({ product }) => (
   <div className="card mb-3 w-100" style={{ border: '1px solid #F6F7FE' }}>
