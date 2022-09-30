@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import Button from '../../../../components/Button';
 import { testStr } from '../../../../utils/constants';
 import { capitalize, createSubString } from '../../../../utils/helpers';
+import ImageCarousel from '../../../../components/Carousel';
 
 const ViewProduct = ({ product }) => (
   <div className="card mb-3 w-100" style={{ border: '1px solid #F6F7FE' }}>
@@ -17,7 +18,7 @@ const ViewProduct = ({ product }) => (
             <rect width="100%" height="100%" fill="#868e96" />
             <text x="40%" y="50%" fill="#dee2e6" dy=".3em">Image</text>
           </svg>
-        ) : (<img src={product?.image && product?.image} className="card-img" alt="10X10" style={{ width: '100%', height: '250px' }} />)}
+        ) : (<ImageCarousel images={JSON.parse(product?.image)} />)}
       </div>
       <div className="col-md-8">
         <div className="card-body">
