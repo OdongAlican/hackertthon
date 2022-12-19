@@ -7,7 +7,7 @@ import React from 'react';
 import { ErrorSection } from './Generics';
 
 export const Input = ({
-  inputSize, inputName, changeValue, inputType, label, placeholder, errors,
+  inputSize, inputName, changeValue, inputType, label, placeholder, errors, value,
 }) => (
   <div>
     <div>
@@ -16,6 +16,7 @@ export const Input = ({
     <input
       onChange={changeValue}
       placeholder={placeholder}
+      value={value}
       type={inputType}
       name={inputName}
       className={`${inputSize === 'small' ? 'w-50' : inputSize === 'medium' ? 'w-75' : 'w-100'} form-control`}

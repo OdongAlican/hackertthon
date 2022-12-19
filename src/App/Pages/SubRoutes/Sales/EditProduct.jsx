@@ -1,10 +1,10 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable react/prop-types */
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/label-has-associated-control */
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import { useDispatch } from 'react-redux';
 import { Input } from '../../../../components/Input';
@@ -12,18 +12,30 @@ import SelectOption from '../../../../components/SelectOption';
 import { convertImageToBase64 } from '../../../../utils/helpers';
 import placeholder from '../../../../utils/images/placeholder.png';
 import Button from '../../../../components/Button';
-import { createNewProduct } from '../../../../actions/products';
+import { updateProduct } from '../../../../actions/products';
 import { initialProductState } from '../../../../utils/constants';
 
 const categoryList = [{ name: 'Cloth' }, { name: 'Shoe' }, { name: 'Electronic' }, { name: 'Other' }];
 
-const CreateProduct = ({ showFxn }) => {
+const EditProduct = ({ showFxn, product }) => {
   const [values, setValues] = useState(initialProductState);
   const [image, setImage] = useState('');
   const [imagesArray, setImageArray] = useState([]);
   const [base64Image, setBase64Image] = useState('');
 
   const dispatch = useDispatch();
+
+  useMemo(() => {
+    const productData = {
+      category: product?.category,
+      name: product?.productname,
+      price: product?.productprice,
+      description: product?.description,
+    };
+    setImageArray(JSON.parse(product?.image));
+    setValues(productData);
+  }, [product]);
+
   const handleChange = e => {
     const { value, name } = e.target;
     setValues({ ...values, [name]: value });
@@ -39,21 +51,21 @@ const CreateProduct = ({ showFxn }) => {
   };
 
   const submit = () => {
-    dispatch(createNewProduct({ ...values, image: JSON.stringify(values?.image) })); showFxn();
+    dispatch(updateProduct({ ...values, image: JSON.stringify(values?.image), id: product?.id }));
+    showFxn();
   };
 
   useEffect(() => {
     if (base64Image) { setImageArray([...imagesArray, base64Image]); }
   }, [base64Image]);
 
-  useEffect(() => { setValues({ ...values, image: imagesArray }); }, [imagesArray]);
-
   const removeSelectedImage = index => {
     const res = imagesArray.filter(img => imagesArray.indexOf(img) !== index);
     setImageArray(res);
   };
 
-  console.log(imagesArray, 'imagesArray');
+  useEffect(() => { setValues({ ...values, image: imagesArray }); }, [imagesArray]);
+  console.log(product, 'product');
 
   return (
     <>
@@ -92,6 +104,7 @@ const CreateProduct = ({ showFxn }) => {
         <div className="col-md-6">
           <Input
             inputName="name"
+            value={values?.name}
             placeholder="Type here ...."
             label="Product Name"
             inputType="text"
@@ -101,6 +114,7 @@ const CreateProduct = ({ showFxn }) => {
         </div>
         <div className="col-md-6">
           <Input
+            value={values?.price}
             inputName="price"
             placeholder="Type here ...."
             label="Price (USD)"
@@ -112,7 +126,7 @@ const CreateProduct = ({ showFxn }) => {
       </div>
       <div className="row mt-3">
         <div className="col-md-6">
-          <SelectOption name="category" label="Choose Category" selectElement={handleChange} list={categoryList} />
+          <SelectOption value={values.category} name="category" label="Choose Category" selectElement={handleChange} list={categoryList} />
         </div>
         {values?.category === 'Other' ? (
           <div className="col-md-6">
@@ -130,7 +144,7 @@ const CreateProduct = ({ showFxn }) => {
       <div className="mt-3">
         <div>
           <label className="fw-bold mb-2">Description</label>
-          <textarea className="form-control" rows="3" name="description" onChange={handleChange} />
+          <textarea value={values.description} className="form-control" rows="3" name="description" onChange={handleChange} />
         </div>
       </div>
       <div className="d-flex mt-3 justify-content-center">
@@ -147,4 +161,4 @@ const CreateProduct = ({ showFxn }) => {
   );
 };
 
-export default CreateProduct;
+export default EditProduct;

@@ -1,8 +1,10 @@
 /* eslint-disable import/prefer-default-export */
 
-import { DeleteRequest, GetRequest, PostRequest } from '../utils/index';
 import {
-  getProductsList, methods, FETCH_PRODUCTS, NEW_PRODUCT, DELETED_PRODUCT,
+  DeleteRequest, GetRequest, PostRequest, PutRequest,
+} from '../utils/index';
+import {
+  getProductsList, methods, FETCH_PRODUCTS, NEW_PRODUCT, DELETED_PRODUCT, UPDATED_PRODUCT,
 } from './constants';
 
 export const fetchProductsList = page => async dispatch => {
@@ -31,6 +33,20 @@ export const deleteProduct = id => async dispatch => {
   try {
     await DeleteRequest(methods.delete, `${getProductsList}/${id}`);
     dispatch({ type: DELETED_PRODUCT, payload: id });
+  } catch (error) {
+    console.log(error?.response?.data, 'response error');
+  }
+};
+
+export const updateProduct = data => async dispatch => {
+  const requestBody = {
+    ...data, productname: data?.name, productprice: data?.price,
+  };
+  console.log(requestBody, 'requestBody');
+  try {
+    const response = await PutRequest(methods.put, `${getProductsList}/${data?.id}`, requestBody);
+    console.log(response, 'response data!!');
+    dispatch({ type: UPDATED_PRODUCT, payload: response?.data });
   } catch (error) {
     console.log(error?.response?.data, 'response error');
   }

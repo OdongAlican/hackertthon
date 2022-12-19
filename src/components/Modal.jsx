@@ -32,10 +32,12 @@ export const EditDeleteModal = ({
   deleteAction, editAction,
 }) => (
   <Dropdown>
-    <Dropdown.Toggle variant="secondary" id="dropdown-basic" />
+    <Dropdown.Toggle onDrop="start" variant="secondary" id="dropdown-button-drop-start" />
     <Dropdown.Menu>
       <Dropdown.Item onClick={editAction}>Edit</Dropdown.Item>
       <Dropdown.Item onClick={deleteAction}>Delete</Dropdown.Item>
+      <Dropdown.Item>View Related Products</Dropdown.Item>
+      <Dropdown.Item>Report</Dropdown.Item>
     </Dropdown.Menu>
   </Dropdown>
 );

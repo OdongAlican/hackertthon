@@ -1,3 +1,5 @@
+/* eslint-disable no-nested-ternary */
+
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -9,6 +11,7 @@ import Loader from '../../components/Loader';
 import PaginationComponent from '../../components/Pagination';
 import { ModalComponent } from '../../components/Modal';
 import ViewProduct from './SubRoutes/Sales/ViewProduct';
+import EditProduct from './SubRoutes/Sales/EditProduct';
 
 const Home = () => {
   const [loading, setLoading] = useState(false);
@@ -28,7 +31,9 @@ const Home = () => {
   };
 
   const goToPage = page => { setUpdatedProductList([]); setPageNumber(page); };
-  const displayModal = product => { setCurrentProduct(product); setShow(true); setDisplay('create'); };
+  const displayModal = (product, state) => {
+    setCurrentProduct(product); setShow(true); setDisplay(state);
+  };
   const showFxn = () => { setShow(false); setDisplay(''); };
 
   useEffect(() => { fetchProducts(); }, []);
@@ -38,9 +43,13 @@ const Home = () => {
   return (
     <>
       {
-        display === 'create' ? (
+        display === 'view' ? (
           <ModalComponent title="Product Details" show={show} showFxn={showFxn}>
             <ViewProduct product={currentProduct} showFxn={showFxn} />
+          </ModalComponent>
+        ) : display === 'edit' ? (
+          <ModalComponent title="Update Details" show={show} showFxn={showFxn}>
+            <EditProduct product={currentProduct} showFxn={showFxn} />
           </ModalComponent>
         ) : null
       }
