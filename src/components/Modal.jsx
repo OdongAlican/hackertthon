@@ -1,5 +1,5 @@
 import React from 'react';
-import { Modal } from 'react-bootstrap';
+import { Modal, Dropdown } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 
 export const ModalComponent = ({
@@ -28,6 +28,18 @@ export const XlModalComponent = ({
   </Modal>
 );
 
+export const EditDeleteModal = ({
+  deleteAction, editAction,
+}) => (
+  <Dropdown>
+    <Dropdown.Toggle variant="secondary" id="dropdown-basic" />
+    <Dropdown.Menu>
+      <Dropdown.Item onClick={editAction}>Edit</Dropdown.Item>
+      <Dropdown.Item onClick={deleteAction}>Delete</Dropdown.Item>
+    </Dropdown.Menu>
+  </Dropdown>
+);
+
 ModalComponent.propTypes = {
   show: PropTypes.bool.isRequired,
   title: PropTypes.string.isRequired,
@@ -40,4 +52,9 @@ XlModalComponent.propTypes = {
   title: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired,
   showFxn: PropTypes.func.isRequired,
+};
+
+EditDeleteModal.propTypes = {
+  editAction: PropTypes.func.isRequired,
+  deleteAction: PropTypes.func.isRequired,
 };

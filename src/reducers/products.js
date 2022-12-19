@@ -1,4 +1,4 @@
-import { FETCH_PRODUCTS, NEW_PRODUCT } from '../actions/constants';
+import { DELETED_PRODUCT, FETCH_PRODUCTS, NEW_PRODUCT } from '../actions/constants';
 
 const initialState = {
   productsList: { products: [], total: 0 },
@@ -21,6 +21,15 @@ const products = (state = initialState, action) => {
           products: [
             action?.payload, ...state?.productsList?.products,
           ],
+        },
+      };
+    case DELETED_PRODUCT:
+      return {
+        ...state,
+        productsList: {
+          products: state?.productsList?.products.filter(
+            product => product.id !== action.payload,
+          ),
         },
       };
     default:

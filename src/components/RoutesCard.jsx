@@ -15,6 +15,8 @@ const RoutesCard = ({ children }) => {
 
     if (history.location.pathname.includes('requests')) setCurrentRoute('requests');
 
+    if (history.location.pathname.includes('products-details')) setCurrentRoute('products-details');
+
     if (history.location.pathname.includes('dashboard')) setCurrentRoute('dashboard');
   }, []);
   history.listen(location => setCurrentRoute(location.pathname));
@@ -25,8 +27,9 @@ const RoutesCard = ({ children }) => {
             currentRoute.includes('purchase') ? 'Your Purchase'
               : currentRoute.includes('sales') ? 'Your Sales'
                 : currentRoute.includes('requests') ? 'Your Requests'
-                  : currentRoute.includes('dashboard') ? 'Available Products'
-                    : null
+                  : currentRoute.includes('products-details') ? ''
+                    : currentRoute.includes('dashboard') ? ''
+                      : null
           }
       </div>
       <div className="mini-routes-card-header">

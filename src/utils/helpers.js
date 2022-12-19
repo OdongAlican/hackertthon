@@ -13,6 +13,7 @@ export const determineSubTitle = string => {
   if (string?.includes('sales')) return 'Select and view all your past sales';
   if (string?.includes('requests')) return 'Select and view all your past requests';
   if (string?.includes('purchase')) return 'Select and view all your past purchase';
+  if (string?.includes('products-details')) return '';
   return 'Make your choice';
 };
 

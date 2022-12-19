@@ -7,6 +7,7 @@ export const PASSWORD_RESET = 'PASSWORD_RESET';
 export const PASSWORD_UPDATE = 'PASSWORD_UPDATE';
 export const FETCH_PRODUCTS = 'FETCH_PRODUCTS';
 export const NEW_PRODUCT = 'NEW_PRODUCT';
+export const DELETED_PRODUCT = 'DELETED_PRODUCT';
 
 export const methods = {
   get: 'get', post: 'post', delete: 'delete', put: 'put',

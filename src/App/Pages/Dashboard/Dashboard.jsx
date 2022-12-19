@@ -23,6 +23,7 @@ import { capitalize, fetchLoggedInUser } from '../../../utils/helpers';
 import { ModalComponent } from '../../../components/Modal';
 import CreateProduct from '../SubRoutes/Sales/CreateProduct';
 import Profile from '../../../utils/images/profile.jpg';
+import DetailedSaleSection from '../SubRoutes/Sales/DetailedSaleSection';
 
 const Dashboard = () => {
   const [show, setShow] = useState(false);
@@ -103,6 +104,7 @@ const Dashboard = () => {
           <Route path={`${path}/purchase`} component={Purchase} />
           <Route path={`${path}/sales`} component={Sales} />
           <Route path={`${path}/requests`} component={Requests} />
+          <Route path={`${path}/products-details/:id`} component={DetailedSaleSection} />
         </RoutesCard>
       </Router>
     </div>

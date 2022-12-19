@@ -40,7 +40,7 @@ const Home = () => {
       {
         display === 'create' ? (
           <ModalComponent title="Product Details" show={show} showFxn={showFxn}>
-            <ViewProduct product={currentProduct} />
+            <ViewProduct product={currentProduct} showFxn={showFxn} />
           </ModalComponent>
         ) : null
       }
